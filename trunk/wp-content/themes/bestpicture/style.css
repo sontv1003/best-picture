@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+@font-face {
+    font-family: 'UTM-Avo';
+    src: url('fonts/UTM_AVO_REGULAR.TTF');
+}
+@font-face {
+    font-family: 'UTM-Avo-Bold';
+    src: url('fonts/UTM_AVO_BOLD.TTF');
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+caption,
+th,
+td {
+    font-weight: normal;
+    text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    clear: both;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #ccc;
+}
+html {
+    overflow-y: scroll;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    font-family: Arial;
+    font-size: 14px;
+    margin: 0 auto;
+    height: 100%;
+}
+#header {
+    min-height: 100px;
+    background: #38414A;
+}
+#main {
+    margin-bottom: 50px;
+    height: auto;
+    background: #F2F2F2;
+}
+#content {
+    min-height: 400px;
+    padding: 10px 0px;
+}
+#footer{
+    background: #000;
+    color: #fff;
+    line-height: 50px;
+    margin-top: -50px;
+    min-height: 50px;
+}
+#footer a{
+    color: #fff;
+}
+#header .line {
+    background: url('images/line.png') top left repeat-x;
+    height: 22px;
+    border-bottom: 1px solid #5E656D;
+}
+#header .head {
+    border-bottom: 1px solid #5E656D;
+    min-height: 78px;
+}
+#header .logo {
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+#header h3 {
+    font-family: 'UTM-Avo';
+    font-weight: normal;
+    font-size: 12px;
+    color: #fff;
+}
+.box_menu {
+    min-height: 31px;
+    padding: 10px 0px;
+    border-top: 1px solid #A1A6AA;
+    border-bottom: 1px solid #B8B8B8;
+}
+.box_size {
+    margin: 0 auto;
+    max-width: 1044px;
+    width: 100%;
+}
+ul#menu {
+    width: 57%;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+ul#menu li{
+    display: inline-block;
+    padding-right: 20px;
+}
+ul#menu li a {
+    font-family: 'UTM-Avo';
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+
+.search {
+    width: 42%;
+    position: relative;
+}
+.search input[type="text"] {
+    padding: 2px 10px 3px 10px;
+    width: 100%;
+    border: 1px solid #9F9F9F;
+    font-family: 'UTM-Avo-Bold';
+    font-size: 13px;
+    color: #38414a;
+}
+table.customer {
+    
+}
+table.customer td{
+    vertical-align: middle;
+}
+table.customer td a {
+    color: #fff;
+    font-family: 'UTM-Avo';
+    font-size: 13px;
+}
+table.customer td a.sign_in {
+    color: #f06e5f;
+}
+.gallery {
+    width: 71%;
+}
+.widget_content {
+    width: 29%;
+}
+.widget_content .widget_box{
+    border: 1px solid #C0C0C0;
+    min-height: 100px;
+}
+.btn_search {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+.box_image {
+    padding: 5px;
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+    background: #fff;
+    width: 235px; 
+    height: 230px; 
+    border: 1px solid #C3C3C3;
+}
+.box_image .info_left {
+    width: 69%;
+    float: left;
+}
+.box_image .info_right {
+    width: 31%;
+    float: right;
+}
+.box_image .cat_title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.box_image .cat_title a{
+    text-transform: uppercase;
+    color: #007ffe;
+    font-family: 'UTM-Avo';
+    font-size: 16px;
+    text-shadow: 0px 0px 1px #CCC;
+}
+.image_detail {
+    background: #fff; 
+    padding: 12px 13px;
+    width: 97%;
+}
+.image_detail img {
+    max-width: 694px;
+}

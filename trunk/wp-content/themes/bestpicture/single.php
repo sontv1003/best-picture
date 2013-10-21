@@ -1,0 +1,40 @@
+<?php
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twelve
+ * @since Twenty Twelve 1.0
+ */
+get_header(); ?>
+    <div class="gallery fl">
+    <?php if ( have_posts() ) : ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+        <div class="image_detail">
+            <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+               <?php if(has_post_thumbnail($post->ID)) {?>
+                   <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
+               <?php } ?>
+            </a>
+            <div class="cat_title">
+                <?php $cat = get_the_category($post->ID);?>
+                <a href="<?php echo get_category_link($cat[0]->term_id); ?> ">
+                    <?php echo $cat[0]->name;?>
+                </a>
+            </div>
+            <div class="info_left" style="width: 69%;">September 12th, 10:00</div>
+            <div class="info_right" style="width: 31%;">1920x1080</div>
+            <div class="clear"></div>
+        </div>
+        <?php endwhile;?>
+    <?php endif; ?>
+        <div class="clear"></div>
+    </div>
+    <div class="widget_content fr">
+        <div class="widget_box">
+
+        </div>
+    </div>
+    <div class="clear"></div>
+<?php // get_sidebar(); ?>
+<?php get_footer(); ?>
