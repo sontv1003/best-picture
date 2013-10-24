@@ -30,7 +30,7 @@ get_header(); ?>
                     <?php echo $cat[0]->name;?>
                 </a>
             </div>
-            <div class="info_left" style="width: 69%;">September 12th, 10:00</div>
+            <div class="info_left" style="width: 69%;"><?php the_date(); ?></div>
             <div class="info_right" style="width: 31%;">1920x1080</div>
             <div class="clear"></div>
         </div>
