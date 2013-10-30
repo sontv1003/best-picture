@@ -39,10 +39,9 @@ get_header(); ?>
         <div class="clear"></div>
     </div>
     <div class="widget_content fr">
-        <div class="widget_box">
-
+        <div class="widget_box sidebar_main">
+            <?php dynamic_sidebar( 'sidebar-1' ); ?>
         </div>
     </div>
     <div class="clear"></div>
-<?php // get_sidebar(); ?>
 <?php get_footer(); ?>
