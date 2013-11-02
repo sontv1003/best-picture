@@ -46,7 +46,7 @@
     <div class="box_menu">
         <div class="box_size">
             <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fl', 'menu_id' => 'menu' ) ); ?>
-            <div class="search fr">
+            <div class="search-layout fr">
                 <form action="<?php bloginfo('home'); ?>" method="get" id="searchform"> 
                     <input type="text" size="10" value="Search" name="s" class="textfield" id="navsearch" onfocus="if(this.value=='Search') this.value='';" onblur="if(this.value=='') this.value='Search';"> 
                     <input class="btn_search" type="image" border="0" alt="" src="<?php bloginfo( 'template_url' ); ?>/images/search.png" name="searchsubmit" id="navsearchbutton">
