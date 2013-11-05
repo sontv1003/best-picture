@@ -51,7 +51,15 @@ get_header();
                         <span class="downloads">Downloads: 1298</span>
                     </div>
                     <div class="fr" style="width: 35%;">
-                        <span class="show-info1">Original: </span><span class="show-info2">2048x1024</span><br/>
+                        <span class="show-info1">Original: </span><span class="show-info2">
+                        <?php 
+                            if(has_post_thumbnail($post->ID)) {            
+                                $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+                                $imageInfo = wp_get_attachment_image_src($post_thumbnail_id, 'full', true);
+                                echo $imageInfo[1].'x'.$imageInfo[2];
+                            }
+                        ?>
+                        </span><br/>
                         <select id="resolution" class="resolution" name="resolution" onchange="javascript:selectRash(this)">
                             <option value="1" disabled="" selected="selected">Select Resolution:</option>
                             <optgroup label="Widescreen 16:10">

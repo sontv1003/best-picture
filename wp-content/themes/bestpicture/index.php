@@ -30,13 +30,36 @@ get_header(); ?>
                     <?php echo $cat[0]->name;?>
                 </a>
             </div>
-            <div class="info_left" style="width: 69%;"><?php the_date(); ?></div>
-            <div class="info_right" style="width: 31%;">1920x1080</div>
+            <div class="info_left" style="width: 69%;"><?php echo get_the_date(); ?></div>
+            <div class="info_right" style="width: 31%;">
+            <?php 
+            if(has_post_thumbnail($post->ID)) {            
+                $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+                $imageInfo = wp_get_attachment_image_src($post_thumbnail_id, 'full', true);
+                echo $imageInfo[1].'x'.$imageInfo[2];
+            }
+            ?>
+            </div>
             <div class="clear"></div>
         </div>
         <?php endwhile;?>
     <?php endif; ?>
         <div class="clear"></div>
+        <div class="page-area">
+            <div class="summary-page clearfix">
+                <div class="summary-left">
+                    <h3><?php echo $wp_query->max_num_pages; ?></h3>
+                    <span>pages</span>
+                </div>
+                <div class="summary-right">
+                    <h3><?php echo $wp_query->found_posts; ?></h3>
+                    <span>wallpapers</span>
+                </div>
+            </div>
+            <div class="nav-page">
+                <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
+            </div>
+        </div>
     </div>
     <div class="widget_content fr">
         <div class="widget_box sidebar_main">
