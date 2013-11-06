@@ -630,8 +630,14 @@ h1.entry-title {
 .post-prev {
     background: url('images/prev.png') right center no-repeat;
 }
+.post-prev:hover {
+    background: url('images/prev_hover.png') right center no-repeat;
+}
 .post-next {
     background: url('images/next.png') left center no-repeat;
+}
+.post-next:hover {
+    background: url('images/next_hover.png') left center no-repeat;
 }
 .post-direction table {
     width: 100%;
