@@ -15,6 +15,27 @@
  */
 
 get_header(); ?>
+<div class="banner clearfix">
+    <div class="social fl">
+        <ul>
+            <li>
+                <img src="<?php bloginfo('template_url'); ?>/images/facebook.png" /> <br/>
+                <p>129k<br/>Likes</p>
+            </li>
+            <li>
+                <img src="<?php bloginfo('template_url'); ?>/images/twitter.png" /> <br/>
+                <p>129k<br/>Followers</p>
+            </li>
+            <li>
+                <img src="<?php bloginfo('template_url'); ?>/images/google_plus.png" /> <br/>
+                <p>129k<br/>Followers</p>
+            </li>
+        </ul>
+    </div>
+    <div class="ads fr">
+        <img height="100px" width="731px" src="<?php bloginfo('template_url'); ?>/images/banner.jpg" />
+    </div>
+</div>
     <div class="gallery fl">
     <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
