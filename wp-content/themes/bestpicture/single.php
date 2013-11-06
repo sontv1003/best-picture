@@ -25,7 +25,9 @@ get_header();
             </li>
         </ul>
     </div>
-    <div class="ads fr">ADS</div>
+    <div class="ads fr">
+        <img height="100px" width="731px" src="<?php bloginfo('template_url'); ?>/images/banner.jpg" />
+    </div>
 </div>
 <div class="content_single fl">
     <?php if (have_posts()) : ?>
