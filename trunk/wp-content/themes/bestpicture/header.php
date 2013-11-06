@@ -21,6 +21,7 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div id="container">
     <div id="header">
         <div class="line"></div>
         <div class="box_size">

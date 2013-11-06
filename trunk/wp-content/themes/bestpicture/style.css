@@ -89,6 +89,9 @@ body {
     margin: 0 auto;
     height: 100%;
 }
+#container {
+    min-width: 1044px;
+}
 #header {
     min-height: 100px;
     background: #38414A;
@@ -139,8 +142,9 @@ body {
 }
 .box_size {
     margin: 0 auto;
-    max-width: 1044px;
-    width: 100%;
+    /*max-width: 1044px;*/
+    /*width: 100%;*/
+    width: 1044px;
 }
 ul#menu {
     width: 57%;
