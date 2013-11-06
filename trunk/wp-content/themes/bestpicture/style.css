@@ -324,6 +324,7 @@ ul.related_post .wp_rp_title {
     display: none !important;
 }
 .nav_single {
+    background: url('images/bg_nav.png') repeat-x;
     border: 1px solid #D7D7D7;
     height: 46px;
     line-height: 46px;
@@ -576,4 +577,65 @@ h1.entry-title {
 }
 .page-area {
     margin-top: 15px;
+}
+.arpw_widget ul{
+    padding: 20px 10px 0px 10px;
+}
+.arpw_widget .widget-title {
+    background: url('images/bg_random.png') repeat-x;
+    border-bottom: 1px solid #D8D8D8;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #38414a;
+}
+.arpw_widget .arpw-first {
+    float: left;
+    border-bottom: none;
+    padding-left: 10px;
+}
+.arpw_widget .arpw-last {
+    float: right;
+    border-bottom: none;
+}
+.arpw_widget h3.arpw-title {
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    color: #3f3f3f;
+}
+.arpw-alignleft {
+    margin: 0px !important;
+}
+.arpw-block li {
+    padding-bottom: 0px !important;
+}
+.arpw-alignleft:hover {
+    background: #000;
+}
+.arpw-alignleft img:hover {
+    opacity: 0.7;
+}
+.post-direction {
+    width: 185px;
+    color: #747474;
+}
+.post-prev, .post-next {
+    width: 25px;
+    height: 46px;
+    display: block;
+}
+.post-prev {
+    background: url('images/prev.png') right center no-repeat;
+}
+.post-next {
+    background: url('images/next.png') left center no-repeat;
+}
+.post-direction table {
+    width: 100%;
+}
+.post-direction table td {
+    vertical-align: middle;
 }
