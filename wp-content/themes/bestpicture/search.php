@@ -27,7 +27,7 @@ get_header();
                         <?php echo $cat[0]->name; ?>
                     </a>
                 </div>
-                <div class="info_left" style="width: 69%;"><?php the_date(); ?></div>
+                <div class="info_left" style="width: 69%;"><?php echo get_the_date(); ?></div>
                 <div class="info_right" style="width: 31%;">
                     <?php
                     if (has_post_thumbnail($post->ID)) {

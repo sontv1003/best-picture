@@ -30,7 +30,7 @@ get_header();
 <div class="content_single fl">
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
-            <div class="nav_single">
+            <div class="nav_single clearfix">
                 <span class="lbNav">Wallpaper Gallery:</span>
                 <span>
                     <?php $cat = get_the_category($post->ID); ?>
@@ -38,6 +38,17 @@ get_header();
                         <?php echo $cat[0]->name; ?>
                     </a>
                 </span>
+                <div class="fr post-direction">
+                    <table>
+                        <tr>
+                            <td><?php previous_post_link('%link', '<span class="post-prev"></span>', TRUE); ?> </td>
+                            <td align="left">Preview</td>
+                            <td>&nbsp;</td>
+                            <td align="right">Next</td>
+                            <td><?php next_post_link('%link', '<span class="post-next"></span>', TRUE); ?></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="image_detail">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
@@ -47,8 +58,8 @@ get_header();
                 </a>
                 <div class="single-option clearfix">
                     <div class="fl" style="width: 65%;">
-                        <?php echo get_jamie_social_code(); ?>
-                        <span class="downloads">Downloads: 1298</span>
+                        <?php the_content() ?>
+                        <span class="downloads">Downloads: <?php echo $post->download; ?></span>
                     </div>
                     <div class="fr" style="width: 35%;">
                         <span class="show-info1">Original: </span><span class="show-info2">
@@ -60,6 +71,7 @@ get_header();
                             }
                             ?>
                         </span><br/>
+                        
                         <select id="resolution" class="resolution" name="resolution" onchange="javascript:selectRash(this)">
                             <option value="1" disabled="" selected="selected">Select Resolution:</option>
                             <optgroup label="Widescreen 16:10">
