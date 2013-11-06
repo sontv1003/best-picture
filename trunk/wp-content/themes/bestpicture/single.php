@@ -29,13 +29,13 @@ get_header();
 </div>
 <div class="content_single fl">
     <?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post(); ?>
+        <?php while (have_posts()) : the_post(); ?>
             <div class="nav_single">
                 <span class="lbNav">Wallpaper Gallery:</span>
                 <span>
-                        <?php $cat = get_the_category($post->ID); ?>
+                    <?php $cat = get_the_category($post->ID); ?>
                     <a href="<?php echo get_category_link($cat[0]->term_id); ?> ">
-        <?php echo $cat[0]->name; ?>
+                        <?php echo $cat[0]->name; ?>
                     </a>
                 </span>
             </div>
@@ -43,22 +43,22 @@ get_header();
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
                         <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
-        <?php } ?>
+                    <?php } ?>
                 </a>
                 <div class="single-option clearfix">
                     <div class="fl" style="width: 65%;">
-        <?php echo get_jamie_social_code(); ?>
+                        <?php echo get_jamie_social_code(); ?>
                         <span class="downloads">Downloads: 1298</span>
                     </div>
                     <div class="fr" style="width: 35%;">
                         <span class="show-info1">Original: </span><span class="show-info2">
-                        <?php 
-                            if(has_post_thumbnail($post->ID)) {            
-                                $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+                            <?php
+                            if (has_post_thumbnail($post->ID)) {
+                                $post_thumbnail_id = get_post_thumbnail_id($post->ID);
                                 $imageInfo = wp_get_attachment_image_src($post_thumbnail_id, 'full', true);
-                                echo $imageInfo[1].'x'.$imageInfo[2];
+                                echo $imageInfo[1] . 'x' . $imageInfo[2];
                             }
-                        ?>
+                            ?>
                         </span><br/>
                         <select id="resolution" class="resolution" name="resolution" onchange="javascript:selectRash(this)">
                             <option value="1" disabled="" selected="selected">Select Resolution:</option>
@@ -117,7 +117,7 @@ get_header();
                 <p><span class="tag-title">Tags: </span><span class="single-tag"><?php the_tags('', ', '); ?></p>
             </div>
         <?php endwhile; ?>
-<?php endif; ?>
+    <?php endif; ?>
 
     <div class="clear"></div>
     <div class="line"></div>        
@@ -127,23 +127,32 @@ get_header();
     <div class="fb-comment">
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=542409615782070";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                            return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=542409615782070";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
 
         <fb:comments href="<?php echo get_permalink(); ?>" width="720" num_posts="10"></fb:comments>
     </div>
 </div>
 <div class="widget_single fr">
     <div class="widget_box sidebar-single">
-        <?php dynamic_sidebar( 'sidebar-2' ); ?>
+        <?php dynamic_sidebar('sidebar-2'); ?>
     </div>
 </div>
 <div class="clear"></div>
+<script>
+    var url = '<?php echo get_permalink(get_page_by_path('crop-image')); ?>';
+    
+    function selectRash(e){
+        var resolution = e.value;
+        document.location = url+'?id=<?php echo $post->ID ?>&resolution='+resolution
+    }
+</script>
 <?php // get_sidebar(); ?>
 <?php get_footer(); ?>
+
