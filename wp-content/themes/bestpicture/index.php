@@ -37,7 +37,11 @@ get_header();
     </div>
 </div>
 <div class="gallery fl">
-    <?php if ( have_posts()) : ?>
+    <?php     
+    //$posts = get_posts(array('post_status' => 'publish', 'numberposts' => $wp_query->post_count, 'orderby' => 'meta_value_num', 'meta_key' => '_total_downloads', 'order' => 'DESC'));
+    //foreach($home_post1 as $post) : setup_postdata($post);
+    
+    if ( have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">

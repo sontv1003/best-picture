@@ -368,7 +368,7 @@ ul.related_post .wp_rp_title {
     font-size: 15px;
     font-weight: bold;
 }
-.single-option .show-info2 {
+.single-option .show-info2 a{
     font-size: 15px;
     color: #527ca5;
 }
@@ -626,18 +626,32 @@ h1.entry-title {
     width: 185px;
     color: #747474;
 }
+.post-direction label.lbPrev {
+    float: left;
+    display: inline-block;
+    margin-left: 10px;
+    line-height: 43px;
+}
+.post-direction label.lbNext {
+    float: right;
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 43px;
+}
 .post-prev, .post-next {
     width: 25px;
-    height: 46px;
+    height: 43px;
     display: block;
 }
 .post-prev {
+    float: left;
     background: url('images/prev.png') right center no-repeat;
 }
 .post-prev:hover {
     background: url('images/prev_hover.png') right center no-repeat;
 }
 .post-next {
+    float: right;
     background: url('images/next.png') left center no-repeat;
 }
 .post-next:hover {

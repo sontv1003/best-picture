@@ -487,3 +487,14 @@ if (!function_exists('twentytwelve_comment')) :
     }
 
     add_action('customize_preview_init', 'twentytwelve_customize_preview_js');
+    
+    function increment_download($postId = null) {
+        global $post;
+
+        if(is_single()) {
+            $postId = $post->ID;
+        }
+        
+        $download = (int) get_post_meta( $postId, '_total_downloads', true); 
+        update_post_meta( $postId, '_total_downloads', ++$download );
+    }
