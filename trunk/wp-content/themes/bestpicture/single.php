@@ -8,6 +8,7 @@
  */
 get_header();
 ?>
+
 <div class="banner clearfix">
     <div class="social fl">
         <ul>
@@ -43,17 +44,26 @@ get_header();
                 <div class="fr post-direction">
                     <table>
                         <tr>
-                            <td><?php previous_post_link('%link', '<span class="post-prev"></span>', TRUE); ?> </td>
-                            <td align="left">Preview</td>
-                            <td>&nbsp;</td>
-                            <td align="right">Next</td>
-                            <td><?php next_post_link('%link', '<span class="post-next"></span>', TRUE); ?></td>
+                            <td width="50%"><?php previous_post_link('%link<label class="lbPrev">Preview</label>', '<span class="post-prev"></span>', TRUE); ?> </td>
+                            <td width="50%"><?php next_post_link('%link<label class="lbNext">Next</label>', '<span class="post-next"></span>', TRUE); ?></td>
                         </tr>
                     </table>
                 </div>
             </div>
             <div class="image_detail">
-                <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+                <?php 
+                $srcOriginal = '#';
+                $imageWidth = '0';
+                $imageHeight = '0';
+                if (has_post_thumbnail($post->ID)) {
+                    $post_thumbnail_id = get_post_thumbnail_id($post->ID);
+                    $imageInfo = wp_get_attachment_image_src($post_thumbnail_id, 'full', true);
+                    $srcOriginal = $imageInfo[0];
+                    $imageWidth = $imageInfo[1];
+                    $imageHeight = $imageInfo[2];
+                }
+                ?>
+                <a href="<?php echo $srcOriginal; ?>" target="_blank" onclick="count_download();" title="Show Original Image">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
                         <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
                     <?php } ?>
@@ -61,19 +71,12 @@ get_header();
                 <div class="single-option clearfix">
                     <div class="fl" style="width: 65%;">
                         <?php the_content() ?>
-                        <span class="downloads">Downloads: <?php echo $post->download; ?></span>
+                        <span class="downloads">Downloads: <?php echo (int) get_post_meta( $post->ID, '_total_downloads', true); ?></span>
                     </div>
                     <div class="fr" style="width: 35%;">
                         <span class="show-info1">Original: </span><span class="show-info2">
-                            <?php
-                            if (has_post_thumbnail($post->ID)) {
-                                $post_thumbnail_id = get_post_thumbnail_id($post->ID);
-                                $imageInfo = wp_get_attachment_image_src($post_thumbnail_id, 'full', true);
-                                echo $imageInfo[1] . 'x' . $imageInfo[2];
-                            }
-                            ?>
+                            <a href="<?php echo $srcOriginal; ?>" target="_blank" onclick="count_download();" title="Show Original Image"><?php echo $imageWidth . 'x' . $imageHeight; ?></a>
                         </span><br/>
-                        
                         <select id="resolution" class="resolution" name="resolution" onchange="javascript:selectRash(this)">
                             <option value="1" disabled="" selected="selected">Select Resolution:</option>
                             <optgroup label="Widescreen 16:10">
@@ -165,6 +168,12 @@ get_header();
     function selectRash(e){
         var resolution = e.value;
         document.location = url+'?id=<?php echo $post->ID ?>&resolution='+resolution
+    }
+    
+    function count_download() {
+        jQuery.ajax({
+            url: "<?php echo get_permalink(get_page_by_path('download')); ?>?f_id=<?php echo $post->ID ?>&f_x=352&f_y=54&f_w=1024&f_h=768&f_ajax=true"
+        });
     }
 </script>
 <?php // get_sidebar(); ?>
