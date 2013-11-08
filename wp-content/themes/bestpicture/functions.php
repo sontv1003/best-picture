@@ -518,3 +518,20 @@ function posts_custom_columns($column_name, $id){
         echo the_post_thumbnail( 'admin-thumb' );  
     }  
 }  
+
+// advanced search functionality
+function advanced_search_query($query) {
+ 
+    if($query->is_search()) {
+         
+        // tag search
+        if (isset($_GET['taglist']) && is_array($_GET['taglist'])) {
+            $query->set('tag_slug__and', $_GET['taglist']);
+        }
+     
+        return $query;
+    }
+ 
+}
+
+add_action('pre_get_posts', 'advanced_search_query', 1000);
