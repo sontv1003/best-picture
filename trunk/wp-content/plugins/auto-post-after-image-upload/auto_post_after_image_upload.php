@@ -24,7 +24,7 @@ function auto_post_after_image_upload($attachId)
         'post_type'     => 'post',
         'post_content'  => $attachment->post_title,
         'post_category' => array('0'),
-        'post_status'   => 'pending'
+        'post_status'   => 'publish'
     );
 
     $post_id = wp_insert_post($postData);
