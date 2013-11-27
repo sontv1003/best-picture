@@ -22,7 +22,7 @@ function auto_post_after_image_upload($attachId)
     $postData = array(
         'post_title'    => $attachment->post_title,
         'post_type'     => 'post',
-        'post_content'  => $attachment->post_title,
+        'post_content'  => '', #$attachment->post_title,
         'post_category' => array('0'),
         'post_status'   => 'publish'
     );
