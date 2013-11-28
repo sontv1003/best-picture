@@ -81,7 +81,8 @@ function wp_rp_is_phone() {
 		$wp_rp_is_phone = $detect->isMobile() && !$detect->isTablet();
 	}
 
-	return $wp_rp_is_phone;
+	//return $wp_rp_is_phone;
+	return false; // Alway use Desktop Graphic
 }
 
 function wp_rp_get_platform_options() {
