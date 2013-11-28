@@ -246,7 +246,7 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 	$default_post_type = empty($selected_related_posts) ? 'none' : 'empty';
         
         if($platform_options['theme_name'] == 'vertical.css') {
-            $image_size = 'thumbnail';            
+            $image_size = array(224, 160);           
         } elseif($platform_options['theme_name'] == 'pinterest.css') {
             $image_size = 'full';
         } else {
