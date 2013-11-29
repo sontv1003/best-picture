@@ -518,7 +518,7 @@ h1.entry-title {
     width: 50%;
 }
 .widget_tag_cloud {
-    padding: 20px;
+    padding: 10px;
 }
 .summary-page {
     width: 120px;
@@ -663,13 +663,16 @@ h1.entry-title {
 .post-direction table td {
     vertical-align: middle;
 }
+.tagcloud {
+    text-align: center;
+}
 .tagcloud a {
-    /*font-family: 'UTM-Avo';*/
+    font-family: 'UTM-Avo';
     color: #007ffe;
     line-height: 25px;
 }
 .tagcloud a:hover {
-    /*font-family: 'UTM-Avo-Bold';*/
-    font-weight: bold;
+    font-family: 'UTM-Avo-Bold';
+    /*font-weight: bold;*/
     color: #000;
 }
