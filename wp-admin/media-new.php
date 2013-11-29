@@ -74,6 +74,7 @@ if ( get_user_setting('uploader') || isset( $_GET['browser-uploader'] ) )
 	}; ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
+		console.log('Load category');
 	    $('[name="category_parent"]').change(function(e){
 	    	i = $(this);
 	    	$.ajax({
