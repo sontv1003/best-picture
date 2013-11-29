@@ -68,6 +68,34 @@ if ( get_user_setting('uploader') || isset( $_GET['browser-uploader'] ) )
 	<?php screen_icon(); ?>
 	<h2><?php echo esc_html( $title ); ?></h2>
 
+	<?php add_action( 'wp_enqueue_script', 'load_jquery' );
+	function load_jquery() {
+	    wp_enqueue_script( 'jquery' );
+	}; ?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	    $('[name="category_parent"]').change(function(e){
+	    	i = $(this);
+	    	$.ajax({
+	    		url: '<?php echo get_bloginfo('url') ?>/wp-upload-session.php',
+	    		type: 'post',
+	    		data: "id=" + i.val(),
+	    		success: function(data){
+	   				$('#upload_category_current').html('<strong>Current category :</strong> ' + i.find(':selected').text());
+	    		},
+	    		error: function(){}
+	    	});
+	    });
+	});
+	</script>
+	<div style="margin: 15px 0px;">
+		<span>Category : </span>
+		<span>
+			<?php wp_dropdown_categories(array('hide_empty' => 0, 'name' => 'category_parent', 'orderby' => 'name', 'selected' => $category->parent, 'hierarchical' => true, 'show_option_none' => __('None')));?>
+		</span>
+		<span id="upload_category_current" style="margin-left: 20px;"></span>
+	</div>
+
 	<form enctype="multipart/form-data" method="post" action="<?php echo admin_url('media-new.php'); ?>" class="<?php echo esc_attr( $form_class ); ?>" id="file-form">
 
 	<?php media_upload_form(); ?>

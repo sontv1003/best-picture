@@ -11,19 +11,25 @@ Author: G. M. Shaharia Azam
 Version: 1.0
 Author URI: http://www.shahariaazam.com/
 */
-
+// On your plugin  functions.php
+function register_session() {
+    if (!session_id())
+        session_start();
+}
+add_action('init', 'register_session');
 add_action('add_attachment', 'auto_post_after_image_upload');   // Wordpress Hook
 
 function auto_post_after_image_upload($attachId)
 {
 
     $attachment = get_post($attachId);
+    $post_category = isset($_SESSION['upload_category']) ? $_SESSION['upload_category'] : 0;
 
     $postData = array(
         'post_title'    => $attachment->post_title,
         'post_type'     => 'post',
         'post_content'  => '', #$attachment->post_title,
-        'post_category' => array('0'),
+        'post_category' => array($post_category),
         'post_status'   => 'publish'
     );
 
