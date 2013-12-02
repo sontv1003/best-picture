@@ -37,12 +37,30 @@ get_header();
     </div>
 </div>
 <div class="gallery fl">
-    <?php     
-    //$posts = get_posts(array('post_status' => 'publish', 'numberposts' => $wp_query->post_count, 'orderby' => 'meta_value_num', 'meta_key' => '_total_downloads', 'order' => 'DESC'));
-    //foreach($home_post1 as $post) : setup_postdata($post);
+<?php
+    $arrCats = array(
+        'hide_empty'    => 1,
+        'exclude'       => 1,
+        'orderby'       => 'name',
+	'order'         => 'ASC'
+    );
     
-    if ( have_posts()) : ?>
-        <?php while (have_posts()) : the_post(); ?>
+    $categories = get_categories($arrCats);
+    foreach($categories as $category):
+        $args=array(
+            'showposts'         => 1,
+            'category__in'      => array($category->term_id),
+            'caller_get_posts'  => 1,
+            'orderby'           => 'meta_value',
+            'meta_key'          => '_total_downloads',
+            'order'             => 'DESC',
+            'post_status'       => 'publish',
+        );
+       
+        $posts = get_posts($args);
+    ?>
+    <?php if($posts): ?>
+        <?php foreach($posts as $post): setup_postdata($post); ?>
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
@@ -67,10 +85,12 @@ get_header();
                 </div>
                 <div class="clear"></div>
             </div>
-        <?php endwhile; ?>
-    <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif;
+endforeach;
+    ?>
     <div class="clear"></div>
-    <div class="page-area">
+    <div class="page-area" style="display: none;">
         <div class="summary-page clearfix">
             <div class="summary-left">
                 <h3><?php echo $wp_query->max_num_pages; ?></h3>
@@ -83,7 +103,7 @@ get_header();
         </div>
         <div class="nav-page">
             <?php if (function_exists('wp_pagenavi')) {
-                wp_pagenavi();
+                //wp_pagenavi();
             } ?>
         </div>
     </div>
