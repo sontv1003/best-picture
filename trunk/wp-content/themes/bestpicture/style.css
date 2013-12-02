@@ -7,11 +7,23 @@
 }
 @font-face {
     font-family: 'UTM-Avo';
-    src: url('fonts/UTM_AVO_REGULAR.TTF');
+    src: url('fonts/UTM_AVO_REGULAR.eot');
+    src: url('fonts/UTM_AVO_REGULAR.TTF') format('truetype'),
+         url('fonts/UTM_AVO_REGULAR.otf'),
+         url('fonts/UTM_AVO_REGULAR.woff') format('woff'),
+         url('fonts/UTM_AVO_REGULAR.svg#UTM_AVO_REGULAR') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: 'UTM-Avo-Bold';
-    src: url('fonts/UTM_AVO_BOLD.TTF');
+    src: url('fonts/UTM_AVO_BOLD.eot');
+    src: url('fonts/UTM_AVO_BOLD.TTF') format('truetype'),
+         url('fonts/UTM_AVO_BOLD.otf'),
+         url('fonts/UTM_AVO_BOLD.woff') format('woff'),
+         url('fonts/UTM_AVO_BOLD.svg#UTM_AVO_BOLD') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
@@ -60,7 +72,6 @@ h6 {
 }
 a {
     text-decoration: none;
-    color: #000;
 }
 a:hover {
     color: #ccc;
@@ -157,6 +168,7 @@ ul#menu li{
 }
 ul#menu li a {
     font-family: 'UTM-Avo';
+    color: #000;
 }
 .fl {
     float: left;
