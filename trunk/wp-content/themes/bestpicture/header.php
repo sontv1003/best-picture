@@ -24,13 +24,12 @@
 <div id="container">
     <div id="header">
         <div class="line"></div>
-        <div class="box_size">
+        <div class="box_size" style="position: relative;">
             <div class="fl" style="width: 80%">
                 <?php $header_image = get_header_image();
 		if ( ! empty( $header_image ) ) : ?>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image logo" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
 		<?php endif; ?>
-                <!--<img class="logo" src="images/logo.png" />-->
                 <h3>A collection great pictures, pure High Definition HD. You can download cool desktop images for free</h3>
             </div>
             <table class="customer fr" style="width: 19%">
