@@ -13,16 +13,16 @@ get_header();
     <div class="social fl">
         <ul>
             <li>
-                <img src="<?php bloginfo('template_url'); ?>/images/facebook.png" /> <br/>
-                <p>129k<br/>Likes</p>
+                <a target="_blank" href="https://www.facebook.com/magic4walls"><img src="<?php bloginfo('template_url'); ?>/images/facebook.png" /></a>
+                <p><?php echo get_scp_facebook(); ?><br/>Likes</p>
             </li>
             <li>
-                <img src="<?php bloginfo('template_url'); ?>/images/twitter.png" /> <br/>
-                <p>129k<br/>Followers</p>
+                <a target="_blank" href="https://twitter.com/magic4walls"><img src="<?php bloginfo('template_url'); ?>/images/twitter.png" /></a>
+                <p><?php echo get_scp_twitter(); ?><br/>Followers</p>
             </li>
             <li>
-                <img src="<?php bloginfo('template_url'); ?>/images/google_plus.png" /> <br/>
-                <p>129k<br/>Followers</p>
+                <a target="_blank" href="https://plus.google.com/104496166402943695916/posts"><img src="<?php bloginfo('template_url'); ?>/images/google_plus.png" /></a>
+                <p><?php echo get_scp_googleplus(); ?><br/>Followers</p>
             </li>
         </ul>
     </div>
