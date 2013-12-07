@@ -681,7 +681,7 @@ h1.entry-title {
 .tagcloud a {
     font-family: 'UTM-Avo';
     color: #007ffe;
-    line-height: 25px;
+    line-height: 30px;
 }
 .tagcloud a:hover {
     font-family: 'UTM-Avo-Bold';
