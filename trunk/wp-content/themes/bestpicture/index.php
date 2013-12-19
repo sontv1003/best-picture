@@ -37,49 +37,11 @@ get_header();
     </div>
 </div>
 <div class="gallery fl">
-<?php
-    $paged = get_query_var('paged');
-    if(empty($paged))
-        $paged = 1;
-    
-    $arrCats = array(
-        'hide_empty'    => 1,
-        'exclude'       => 1,
-        'orderby'       => 'name',
-	'order'         => 'ASC'
-    );
-    
-    $categories = get_categories($arrCats);
-    
-    $numberCats         = count($categories);
-    $showposts          = 1;
-    $numberPostsOnPage  = 18;
-    $numberPages        = ceil(($numberCats * $showposts) / $numberPostsOnPage);
-    $numberPostFrom     = ($paged - 1) * $numberPostsOnPage + 1;
-    $numberPostTo       = $numberPostFrom + $numberPostsOnPage - 1;
-    $count              = 0;
-    
-    foreach($categories as $category):
-        $args = array(
-            'showposts'         => $showposts,
-            'category__in'      => array($category->term_id),
-            'caller_get_posts'  => 1,
-            'orderby'           => 'meta_value',
-            'meta_key'          => '_total_downloads',
-            'order'             => 'DESC',
-            'post_status'       => 'publish',
-        );
-       
-        $posts = get_posts($args);
-
-    if($posts):
-        
-        $count++;
-        if($numberPostFrom > $count || $count > $numberPostTo) {
-            continue;
-        }
-    
-        foreach($posts as $post): setup_postdata($post); ?>
+    <?php
+//    query_posts( 'orderby=meta_value&meta_key=_total_downloads&order=DESC&post_status=publish' );
+    //query_posts( 'orderby=name&order=ASC&post_status=publish' );
+    if (have_posts()) :
+        while (have_posts()) : the_post(); ?>        
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
@@ -104,38 +66,22 @@ get_header();
                 </div>
                 <div class="clear"></div>
             </div>
-        <?php endforeach; ?>
-    <?php endif;
-endforeach;
-    ?>
+    <?php endwhile;
+endif; ?>
     <div class="clear"></div>
     <div class="page-area">
         <div class="summary-page clearfix">
             <div class="summary-left">
-                <h3><?php echo $numberPages; ?></h3>
+                <h3><?php echo $wp_query->max_num_pages; ?></h3>
                 <span>pages</span>
             </div>
             <div class="summary-right">
-                <h3><?php echo $numberCats * $showposts; ?></h3>
-                <span>categories</span>
+                <h3><?php echo $wp_query->found_posts; ?></h3>
+                <span>wallpapers</span>
             </div>
         </div>
-        <div class="nav-page">
-            <div class="wp-pagenavi">
-            <?php if($paged > 1) {?>
-                <a class="previouspostslink" href="<?php echo site_url() ?>/page/<?php echo $paged - 1; ?>">«</a>
-            <?php }?>
-            <?php for($i = 1; $i <= $numberPages; $i++): ?>
-                <?php if($paged == $i): ?>
-                <span class="current"><?php echo $i ?></span>
-                <?php else: ?>
-                <a class="page larger" href="<?php echo site_url() ?>/page/<?php echo $i ?>"><?php echo $i ?></a>
-                <?php endif; ?>
-            <?php endfor; ?>
-            <?php if(($paged+1) < $numberPages) {?>
-                <a class="nextpostslink" href="<?php echo site_url() ?>/page/<?php echo $paged + 1; ?>">»</a>
-            <?php }?>
-            </div>
+        <div class="nav-page" style="margin-left: 5px;">
+            <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
         </div>
     </div>
 </div>
