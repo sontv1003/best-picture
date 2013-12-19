@@ -16,7 +16,7 @@ get_header();
         </header>
         <?php while (have_posts()) : the_post(); ?>
             <div class="box_image fl">
-                <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+                <a href="<?php the_permalink() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
                         <?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
                     <?php } ?>
