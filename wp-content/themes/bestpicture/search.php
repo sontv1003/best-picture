@@ -15,8 +15,8 @@ get_header();
             <h1 class="page-title"><?php printf(__('Search Results for: %s', 'twentytwelve'), '<span>' . get_search_query() . '</span>'); ?></h1>
         </header>
         <?php while (have_posts()) : the_post(); ?>
-            <div class="box_image fl">
-                <a href="<?php the_permalink() ?>">
+            <div class="box_image fl" id="post-<?=$post->ID?>">
+                <a href="<?php the_permalink(); ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
                         <?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
                     <?php } ?>
