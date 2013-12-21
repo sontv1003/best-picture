@@ -80,7 +80,7 @@ endif; ?>
                 <span>wallpapers</span>
             </div>
         </div>
-        <div class="nav-page" style="margin-left: 5px;">
+        <div class="nav-page">
             <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
         </div>
     </div>

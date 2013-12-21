@@ -558,9 +558,9 @@ h1.entry-title {
     float: left;
 }
 .nav-page {
-    float: left;
-    margin-top: 20px;
-    margin-left: 30px;
+    position: absolute;
+    left: 130px;
+    top: 15px;    
 }
 .wp-pagenavi .current {
     background: #62ACC9;
@@ -584,8 +584,8 @@ h1.entry-title {
     color: #1a83ac;
 }
 .wp-pagenavi a, .wp-pagenavi span {
-    padding: 0px 8px !important;
-    margin-right: 20px !important;
+    padding: 0px 6px !important;
+    margin-right: 15px !important;
 }
 .wp-pagenavi {
     border-bottom: 3px solid #ccc;
@@ -593,6 +593,7 @@ h1.entry-title {
 }
 .page-area {
     margin-top: 15px;
+    position: relative;
 }
 .arpw_widget ul{
     padding: 20px 10px 0px 10px;
