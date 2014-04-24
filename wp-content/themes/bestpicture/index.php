@@ -33,7 +33,7 @@ get_header();
         </ul>
     </div>
     <div class="ads fr">
-        <img height="100px" width="731px" src="<?php bloginfo('template_url'); ?>/images/banner.jpg" />
+        <?php include_once('ads/banner.php'); ?>
     </div>
 </div>
 <div class="gallery fl">
@@ -45,7 +45,7 @@ get_header();
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
-                        <?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
+                        <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
                     <?php } ?>
                 </a>
                 <div class="cat_title">
@@ -88,6 +88,7 @@ endif; ?>
 <div class="widget_content fr">
     <div class="widget_box sidebar_main">
 <?php dynamic_sidebar('sidebar-1'); ?>
+        <?php include_once('ads/widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>

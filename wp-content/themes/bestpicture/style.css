@@ -238,10 +238,11 @@ table.customer td a.sign_in {
 .box_image {
     padding: 5px;
     margin-right: 10px; 
-    margin-bottom: 10px; 
+    margin-bottom: 15px; 
     background: #fff;
     width: 235px; 
-    height: 230px; 
+    height: 172px;
+    overflow: hidden; 
     border: 1px solid #C3C3C3;
 }
 .box_image img:hover {
@@ -294,8 +295,7 @@ table.customer td a.sign_in {
 }
 .banner .ads {
     width: 70%;
-    border: 1px solid #CCC;
-    min-height: 100px;
+    min-height: 85px;
 }
 .banner .social ul li {
     float: left;
