@@ -45,7 +45,7 @@ get_header();
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
-                        <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
+                        <?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
                     <?php } ?>
                 </a>
                 <div class="cat_title">
