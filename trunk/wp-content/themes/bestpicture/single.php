@@ -27,7 +27,7 @@ get_header();
         </ul>
     </div>
     <div class="ads fr">
-        <img height="100px" width="731px" src="<?php bloginfo('template_url'); ?>/images/banner.jpg" />
+        <?php include_once('ads/banner.php'); ?>
     </div>
 </div>
 <div class="content_single fl">
@@ -159,6 +159,7 @@ get_header();
 <div class="widget_single fr">
     <div class="widget_box sidebar-single">
         <?php dynamic_sidebar('sidebar-2'); ?>
+        <?php include_once('ads/widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>
