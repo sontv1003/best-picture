@@ -8,7 +8,11 @@
  */
 get_header();
 ?>
-
+<div style="position: fixed; top: 150px; left: 0px; width: 120px; height: 600px;">
+<script>
+    document.write('<scr'+'ipt type="text/javascript" src="http://pl.intag.co/ttj?id=2568302&size=120x600&cb=' +new Date().getTime()+'"></scr' + 'ipt>');
+</script>
+</div>
 <div class="banner clearfix">
     <div class="social fl">
         <ul>
@@ -159,7 +163,6 @@ get_header();
 <div class="widget_single fr">
     <div class="widget_box sidebar-single">
         <?php dynamic_sidebar('sidebar-2'); ?>
-        <?php include_once('ads/widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>

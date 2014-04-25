@@ -693,3 +693,7 @@ h1.entry-title {
     /*font-weight: bold;*/
     color: #006edb;
 }
+.widget_text {
+    border: none !important;
+    background: transparent !important;
+}
