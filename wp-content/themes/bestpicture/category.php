@@ -12,7 +12,27 @@
  */
 
 get_header(); ?>
-
+<div class="banner clearfix">
+    <div class="social fl">
+        <ul>
+            <li>
+                <a target="_blank" href="https://www.facebook.com/magic4walls"><img src="<?php bloginfo('template_url'); ?>/images/facebook.png" /></a>
+                <p><?php echo get_scp_facebook(); ?><br/>Likes</p>
+            </li>
+            <li>
+                <a target="_blank" href="https://twitter.com/magic4walls"><img src="<?php bloginfo('template_url'); ?>/images/twitter.png" /></a>
+                <p><?php echo get_scp_twitter(); ?><br/>Followers</p>
+            </li>
+            <li>
+                <a target="_blank" href="https://plus.google.com/104496166402943695916/posts"><img src="<?php bloginfo('template_url'); ?>/images/google_plus.png" /></a>
+                <p><?php echo get_scp_googleplus(); ?><br/>Followers</p>
+            </li>
+        </ul>
+    </div>
+    <div class="ads fr">
+        <?php include_once('ads/banner.php'); ?>
+    </div>
+</div>
 <div class="gallery fl">
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
