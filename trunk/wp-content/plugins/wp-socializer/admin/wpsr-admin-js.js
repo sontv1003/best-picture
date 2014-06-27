@@ -1,7 +1,7 @@
 /* 
  * WP Socializer - Admin page functions
  * Author: Aakash Chakravarthy
- * Version: 2.7
+ * Version: 2.9
  *
  */
 
@@ -11,9 +11,9 @@ $j(document).ready(function(){
 	// Tab Initializements
 	var tabs = $j("#content").tabs({
 		fx: {opacity: 'toggle', duration: 'fast'},
-		select: function(event, ui){
+		/*select: function(event, ui){
 			window.location.hash = ui.tab.hash;
-		}
+		}*/
 	});
 	var subTabs = $j("#tab-3").tabs({fx: {opacity: 'toggle', duration: 'fast'} });
 	
@@ -114,6 +114,8 @@ $j(document).ready(function(){
 				$j(eleId).val(eleValue);
 			}
 		}
+		
+		alert(' Template is applied. Go to "Edit templates" page and customize the arrangement or alignment if needed ' );
 	});
 	
 	// Add social button
@@ -153,7 +155,7 @@ $j(document).ready(function(){
 	
 	$j('[data-tab]').click(function(e){
 		e.preventDefault();
-		tabs.tabs('select', $j(this).attr('data-tab'));
+		tabs.tabs('option', 'active', $j(this).attr('data-tab')-1);
 	});
 	
 	setTimeout(function(){
@@ -172,7 +174,7 @@ $j(document).ready(function(){
 	if($j('.introWrap').length != 0){
 	$j.ajax({
         type: "GET",
-		url: 'http://query.yahooapis.com/v1/public/yql?q=%20SELECT%20*%20FROM%20xml%20WHERE%20url%3D%22http%3A%2F%2Fvaakash.koding.com%2Fwpsr.xml%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env',
+		url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="http://vaakash.github.io/wpsr.xml"') + '&format=xml',
 		dataType: "xml",
 		success: function(xml){
 			try{
@@ -199,19 +201,18 @@ $j(document).ready(function(){
 	$j('.helpTab').click(function(){
 			$j.ajax({
 				type: "GET",
-				url: 'http://query.yahooapis.com/v1/public/yql?q=%20SELECT%20*%20FROM%20xml%20WHERE%20url%3D%22http%3A%2F%2Fvaakash.koding.com%2Fwpsr-help.xml%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env',
+				url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="http://vaakash.github.io/wpsr-help.xml"') + '&format=xml',
 				dataType: "xml",
 				success: function(xml){
 					ver = '[version="' + $j('.wpsrVer').text() + '"]';
 					
 					general = $j(xml).find('general').text();
 					specific = $j(xml).find('content' + ver).text();
-					
-					$j(xml).find('content' + ver).each(function(){
-						$j('.helpBox').hide();
-						$j('.helpBox').html(general + specific);
-						$j('.helpBox').fadeIn();
-					});
+
+					$j('.helpBox').hide();
+					$j('.helpBox').html(general + specific);
+					$j('.helpBox').fadeIn();
+
 				},
 				error: function(err){
 					$j('.helpBox').html('<p>An error occured while getting the help file.</p> For WP Socializer plugin support, use the free <a href="http://www.aakashweb.com/forum/" target="_blank">Aakash Web support forum</a>')

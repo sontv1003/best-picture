@@ -1,7 +1,7 @@
 /*
  * Copyright 2013 Aakash Chakravarthy - www.aakashweb.com
  * Created for WP Socializer - Wordpress Plugin
- * v1.4
+ * v1.5
 */
 
 if(typeof jQuery == 'undefined'){
@@ -59,6 +59,10 @@ jQuery(document).ready(function(){
 	
 	// **
 	var minLeftShareBar = function(){
+		
+		if( $floatbar.attr('data-mobmode') == 0 ) // Since v2.4.9.5
+			return '';
+		
 		if(typeof window.innerWidth !== 'undefined' && window.innerWidth < 800 ){
 			$floatbar.addClass('wpsr_floatbt_min').hide();
 			jQuery('.wpsr_shareminbt').fadeIn();

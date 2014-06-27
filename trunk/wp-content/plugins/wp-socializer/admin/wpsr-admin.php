@@ -119,10 +119,9 @@ echo
 		</li>
 		
 		<li class="parentLi btn">
-			<span class="admSprites retweetIcon"></span>Retweet & Digg
+			<span class="admSprites retweetIcon"></span>Twitter
 			<ul class="childMenu">
-				<li openTag="{retweet-bt}">Retweet button</li>
-				<li openTag="{digg-bt}">Digg button</li>
+				<li openTag="{retweet-bt}">Twitter button</li>
 			</ul>
 		</li>
 		
@@ -210,6 +209,7 @@ function wpsr_reset_values(){
 	$wpsr_sharethis['regular_order'] = 'facebook,twitter,email,sharethis';
 	$wpsr_sharethis['regular2_order'] = 'facebook,twitter,email,sharethis';
 	$wpsr_sharethis['pubkey'] = '';
+	$wpsr_sharethis['copynshare'] = 0;
 	$wpsr_sharethis['addp'] = 1;
 	
 	update_option("wpsr_sharethis_data", $wpsr_sharethis);
@@ -232,11 +232,10 @@ function wpsr_reset_values(){
 	## Facebook Defaults
 	$wpsr_facebook['btstyle'] = 'button_count';
 	$wpsr_facebook['showfaces'] = 0;
-	$wpsr_facebook['width'] = 80;
 	$wpsr_facebook['verb'] = 'like';
-	$wpsr_facebook['font'] = 'arial';
 	$wpsr_facebook['color'] = 'light';
 	$wpsr_facebook['appid'] = '';
+	$wpsr_facebook['locale'] = 'en_US';
 	
 	update_option("wpsr_facebook_data", $wpsr_facebook);
 	
@@ -372,6 +371,7 @@ function wpsr_admin_page(){
 		$wpsr_sharethis['regular_order'] = $_POST['wpsr_sharethis_regular_order'];
 		$wpsr_sharethis['regular2_order'] = $_POST['wpsr_sharethis_regular2_order'];
 		$wpsr_sharethis['pubkey'] = $_POST['wpsr_sharethis_pubkey'];
+		$wpsr_sharethis['copynshare'] = $_POST['wpsr_sharethis_copynshare'];
 		$wpsr_sharethis['addp'] = $_POST['wpsr_sharethis_addp'];
 		
 		update_option("wpsr_sharethis_data", $wpsr_sharethis);
@@ -394,11 +394,10 @@ function wpsr_admin_page(){
 		## Facebook Options
 		$wpsr_facebook['btstyle'] = $_POST['wpsr_facebook_btstyle'];
 		$wpsr_facebook['showfaces'] = $_POST['wpsr_facebook_showfaces'];
-		$wpsr_facebook['width'] = $_POST['wpsr_facebook_width'];
 		$wpsr_facebook['verb'] = $_POST['wpsr_facebook_verb'];
-		$wpsr_facebook['font'] = $_POST['wpsr_facebook_font'];
 		$wpsr_facebook['color'] = $_POST['wpsr_facebook_color'];
 		$wpsr_facebook['appid'] = $_POST['wpsr_facebook_appid'];
+		$wpsr_facebook['locale'] = $_POST['wpsr_facebook_locale'];
 		
 		update_option("wpsr_facebook_data", $wpsr_facebook);
 		
@@ -562,14 +561,14 @@ function wpsr_admin_page(){
 				<div class="startBox manual">
 				<h2>Manual setup</h2>
 				<p>If you want to create your own button arrangement, then edit the individual button settings if needed.</p>
-				<p>Then use the "Placement" section to place the buttons in the template</p>
+				<p>Then use the <b>Edit templates</b> section to place the buttons in the template</p>
 				<div class="startBt" data-tab="2"><span>Manual customization</span></div>
 				</div>
 				
 			</div>
 			
 			<h5>Give 5 star rating</h5>
-			<p class="note">If you like this plugin then please give <a href="http://wordpress.org/extend/plugins/wp-socializer/" target="_blank"><img src="<?php echo WPSR_ADMIN_URL; ?>images/five-star.png" align="absmiddle"/></a> rating in the WP page to show the quality and worth of the plugin.</p>
+			<p class="note">If you like this plugin then please give <a href="http://wordpress.org/plugins/wp-socializer/" target="_blank"><img src="<?php echo WPSR_ADMIN_URL; ?>images/five-star.png" align="absmiddle"/></a> rating in the WP page to show the quality and worth of the plugin.</p>
 			
 			<h5>Report bugs</h5>
 			<p class="note">If you notice a bug in the plugin, report it immediately in the <a href="http://www.aakashweb.com/forum/" target="_blank">Support Forum</a>.</p>
@@ -581,12 +580,12 @@ function wpsr_admin_page(){
 				<h3 class="noToggle">Edit button properties: </h3>
 				<p>Click to edit the button properties.</p>
 				<ul class="buttonsList clearfix">
-					<li data-win="winSocialBts" data-width="85%" data-title="Social Buttons"><span class="admSprites socialButtons"></span> Social buttons</li>
+					<li data-win="winSocialBts" data-width="85%" data-title="Social Buttons"><span class="admSprites socialButtons"></span> Social button settings</li>
 					<li data-win="winAddthis" data-title="Addthis"><span class="admSprites addthisIcon"></span> Addthis</li>
-					<li data-win="winSharethis" data-title="Sharethis"><span class="admSprites sharethisIcon"></span> Sharethis</li>
-					<li data-win="winRetweetDigg" data-title="Retweet and Digg"><span class="admSprites retweetIcon"></span> Retweet &amp; Digg</li>
-					<li data-win="winFacebook" data-title="Facebook"><span class="admSprites facebookIcon"></span> Facebook</li>
-					<li data-win="winCustom" data-title="Custom buttons"><span class="admSprites customIcon"></span> Add a custom button</li>
+					<li data-win="winSharethis" data-title="Sharethis"><span class="admSprites sharethisIcon"></span> Sharethis settings</li>
+					<li data-win="winTwitter" data-title="Twitter settings"><img src="https://twitter.com/favicon.ico" /> Twitter settings</li>
+					<li data-win="winFacebook" data-title="Facebook"><span class="admSprites facebookIcon"></span> Facebook settings <small class="redText">New</small></li>
+					<li data-win="winCustom" data-title="Custom buttons"><span class="admSprites customIcon"></span> Add a custom button <small class="redText">Note</small></li>
 				</ul>
 				
 				<p class="nextStep" data-tab="3">Next step: Insert these customized buttons in the template</p>
@@ -695,21 +694,9 @@ function wpsr_admin_page(){
 				</table>
 			</div>
 			
-			<h3>Bit.ly <?php _e('Integration', 'wpsr'); ?></h3>
-			<span class="smallText">Bit.ly is used only in Social bookmarking button for Twitter</span>
+			<h3><s>Bit.ly <?php _e('Integration', 'wpsr'); ?></s></h3>
 			<div class="section">
-				<table width="100%" height="39" border="0">
-				  <tr>
-					<td width="49%" height="35"><label for="wpsr_settings_bitlyusername">Bit.ly <?php _e('Username', 'wpsr'); ?></label></td>
-					<td width="51%"><input name="wpsr_settings_bitlyusername" id="wpsr_settings_bitlyusername" type="text" value="<?php echo $wpsr_settings['bitlyusername']; ?>"/></td>
-				  </tr>
-				  
-				  <tr>
-					<td width="49%" height="35"><label for="wpsr_settings_bitlyapi">Bit.ly API Key</label></td>
-					<td width="51%"><input name="wpsr_settings_bitlyapi" id="wpsr_settings_bitlyapi" type="text" value="<?php echo $wpsr_settings['bitlyapi']; ?>"/></td>
-				  </tr>
-				  
-				</table>
+				<p>Bitly URL shortening feature is disabled in this version</p>
 			</div>
 			
 			<h3><?php _e('WP Socializer Settings', 'wpsr'); ?></h3>
@@ -736,7 +723,8 @@ function wpsr_admin_page(){
 				  </tr>
 			  </table>
 		  </div>
-			
+		
+		<div style="display: none">
 		<h3><?php _e('Hide credit links', 'wpsr'); ?></h3>
 				<div class="section">
 					<table width="100%" height="39" border="0">
@@ -751,6 +739,7 @@ function wpsr_admin_page(){
 					  </tr>
 					</table>
 				</div>
+		</div>
 		
 			  <h3><?php _e('Disable WP Socializer', 'wpsr'); ?></h3>
 				<div class="section">
@@ -1043,6 +1032,15 @@ function wpsr_admin_page(){
 					<td width="31%" height="49"><label for="wpsr_sharethis_pubkey">Sharethis Publisher Key</label></td>
 					<td width="69%"><input name="wpsr_sharethis_pubkey" type="text" id="wpsr_sharethis_pubkey" value="<?php echo $wpsr_sharethis['pubkey']; ?>" size="50" /><br /><span class="smallText"><?php _e('You can see you publisher key in this page. ', 'wpsr'); ?> <a href="http://sharethis.com/account/" target="_blank"><?php _e('Click here', 'wpsr'); ?></a></span></td>
 				  </tr>
+				  
+				  <tr>
+					<td width="31%" height="49"><label for="wpsr_sharethis_copynshare">Disable Sharethis CopyNShare feature</label></td>
+					<td width="69%"><select id="wpsr_sharethis_copynshare" name="wpsr_sharethis_copynshare">
+			  <option <?php echo $wpsr_sharethis['copynshare'] == '1' ? ' selected="selected"' : ''; ?> value="1"><?php _e('Yes', 'wpsr'); ?></option>
+			  <option <?php echo $wpsr_sharethis['copynshare'] == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e('No', 'wpsr'); ?></option>
+			</select></td>
+				  </tr>
+				  
 				  <tr>
 					<td><label for="wpsr_sharethis_addp">Automatically wrap with paragraph</label></td>
 					<td><select id="wpsr_sharethis_addp" name="wpsr_sharethis_addp">
@@ -1055,7 +1053,7 @@ function wpsr_admin_page(){
 		</div><!-- Sharethis -->
 		
 		
-		<div class="inWindow winRetweetDigg">
+		<div class="inWindow winTwitter">
 			<h3><?php _e('General', 'wpsr'); ?></h3>
 			<div class="section">
 			<table width="100%" height="76" border="0">
@@ -1130,20 +1128,8 @@ function wpsr_admin_page(){
 			</table>
 			</div>
 		
-			<h3><?php _e('Digg Button', 'wpsr'); ?></h3>
-			<div class="section">
-			<table width="100%" border="0">
-			  <tr>
-				<td width="31%"><label for="wpsr_digg_type"><?php _e('Digg Button type', 'wpsr'); ?></label></td>
-				<td width="69%"><select id="wpsr_digg_type" name="wpsr_digg_type">
-				  <option <?php echo $wpsr_digg['type'] == 'DiggMedium' ? ' selected="selected"' : ''; ?> value="DiggMedium"><?php _e('Medium', 'wpsr'); ?></option>
-				  <option <?php echo $wpsr_digg['type'] == 'DiggWide' ? ' selected="selected"' : ''; ?> value="DiggLarge"><?php _e('Wide', 'wpsr'); ?></option>
-				  <option <?php echo $wpsr_digg['type'] == 'DiggCompact' ? ' selected="selected"' : ''; ?> value="DiggCompact"><?php _e('Compact', 'wpsr'); ?></option>
-				  <option <?php echo $wpsr_digg['type'] == 'DiggIcon' ? ' selected="selected"' : ''; ?> value="DiggIcon"><?php _e('Icon', 'wpsr'); ?></option>
-				</select></td>
-			  </tr>
-			</table>
-			</div>
+<!-- Digg button options removed -->
+
 		</div> <!-- Retweet and digg -->
 		
 		
@@ -1166,10 +1152,9 @@ function wpsr_admin_page(){
 				  <option <?php echo $wpsr_facebook['showfaces'] == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e('No', 'wpsr'); ?></option>
 				</select></td>
 			  </tr>
-			  <tr>
-				<td height="49"><label for="wpsr_facebook_width"><?php _e('Width', 'wpsr'); ?></label></td>
-				<td><input name="wpsr_facebook_width" id="wpsr_facebook_width" type="text" value="<?php echo $wpsr_facebook['width']; ?>"/><br /><span class="smallText"><?php _e('In pixels', 'wpsr'); ?></span></td>
-			  </tr>
+
+<!-- removed button width option v2.4.9.8 -->
+
 			  <tr>
 				<td height="35"><label for="wpsr_facebook_verb"><?php _e('Verb to Display', 'wpsr'); ?></label></td>
 				<td><select id="wpsr_facebook_verb" name="wpsr_facebook_verb">
@@ -1177,17 +1162,9 @@ function wpsr_admin_page(){
 				  <option <?php echo $wpsr_facebook['verb'] == 'recommend' ? ' selected="selected"' : ''; ?> value="recommend"><?php _e('Recommend', 'wpsr'); ?></option>
 				</select></td>
 			  </tr>
-			  <tr>
-				<td height="37"><label for="wpsr_facebook_font"><?php _e('Font', 'wpsr'); ?></label></td>
-				<td><select id="wpsr_facebook_font" name="wpsr_facebook_font">
-				  <option <?php echo $wpsr_facebook['font'] == 'arial' ? ' selected="selected"' : ''; ?> value="arial">Arial</option>
-				  <option <?php echo $wpsr_facebook['font'] == 'lucida grande' ? ' selected="selected"' : ''; ?> value="lucida grande">Lucida Grande</option>
-				  <option <?php echo $wpsr_facebook['font'] == 'segoe ui' ? ' selected="selected"' : ''; ?> value="segoe ui">Segoe UI</option>
-				  <option <?php echo $wpsr_facebook['font'] == 'tahoma' ? ' selected="selected"' : ''; ?> value="tahoma">Tahoma</option>
-				  <option <?php echo $wpsr_facebook['font'] == 'trebuchet ms' ? ' selected="selected"' : ''; ?> value="trebuchet ms">Trebuchet MS</option>
-				  <option <?php echo $wpsr_facebook['font'] == 'verdana' ? ' selected="selected"' : ''; ?> value="verdana">Verdana</option>
-				</select></td>
-			  </tr>
+
+<!-- removed font option v2.4.9.8 -->
+
 			  <tr>
 				<td height="38"><label for="wpsr_facebook_color"><?php _e('Color scheme', 'wpsr'); ?></label></td>
 				<td><select id="wpsr_facebook_color" name="wpsr_facebook_color">
@@ -1205,6 +1182,12 @@ function wpsr_admin_page(){
 					  <td height="38"><label for="wpsr_facebook_appid"><?php _e('Application ID', 'wpsr'); ?></label></td>
 					  <td><input name="wpsr_facebook_appid" id="wpsr_facebook_appid" type="text" value="<?php echo $wpsr_facebook['appid']; ?>"/><br /><span class="smallText"><?php _e('Useful in analytics', 'wpsr'); ?>. Enter a <b>valid</b> ID or else leave blank.</span></td>
 				   </tr>
+				   
+				   <tr>
+					  <td height="38"><label for="wpsr_facebook_locale"><?php _e('Like Button language / locale', 'wpsr'); ?></label></td>
+					  <td><input name="wpsr_facebook_locale" id="wpsr_facebook_locale" type="text" value="<?php echo $wpsr_facebook['locale']; ?>"/><br /><span class="smallText">Language of the like button. <br/>Get the code for your <a href="http://bit.ly/LxvUk4" target="_blank">language from this page</a> and paste here. Leave empty for en_US</span></td>
+				   </tr>
+				   
 				</table>
 			</div>
 		</div><!-- Facebook -->
@@ -1220,7 +1203,9 @@ function wpsr_admin_page(){
 			<textarea name="wpsr_custom2" id="wpsr_custom2" style="width:99%" rows="8" class="custom_box"><?php echo $wpsr_custom['custom2']; ?></textarea>
 			</div>
 			
-			<p class="note"><?php printf(__('Enter any share button code. Use %s for the page url and %s for page title', 'wpsr'), '{url}', '{title}'); ?></p>
+			<h3>Help</h3>
+			<div class="section"><p>Enter any share button code. Use <code>{url}</code> for the page url and <code>{title}</code> for page title</p>
+			<p><a href="#" target="_blank">Check this small tutorial</a> on using custom buttons and for some examples.</p></div>
 			
 		</div><!-- Custom -->
 		

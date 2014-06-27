@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.4.9
+Version: 2.4.9.8
 Plugin URI: http://www.aakashweb.com/
 Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar and Smart load feature. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.4.9');
+define('WPSR_VERSION', '2.4.9.8');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -198,7 +198,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Email',
 		'titleText' => __('Email this ', 'wpsr') . '',
 		'icon' => 'email.png',
-		'url' => 'mailto:?to=&amp;subject={title}&amp;body={excerpt}%20-%20{de-url}', // Fixed the bugs in v2.4.1, v2.4.3 & v2.4.6
+		'url' => 'mailto:?to=&subject={title}&body={excerpt}%20-%20{de-url}', // Fixed the bugs in v2.4.1, v2.4.3, v2.4.6 & v2.4.9.6
 		'support32px' => 1,
 	),
 	
@@ -805,6 +805,14 @@ $wpsr_socialsites_list = array(
         'url' => 'http://www.viadeo.com/shareit/share/?url={url}&title={title}&urllanguage=fr',
     ),
 	
+	'vkontakte' => array( // Added in v2.4.9.8 24-01-2014
+		'name' => 'VKontakte',
+		'titleText' => __('Share this on ', 'wpsr') . 'VKontakte',
+        'icon' => 'vkontakte.png',
+        'url' => 'http://vk.com/share.php?url={url}&title={title}&description={excerpt}',
+		'support32px' => 1, 
+    ),
+	
 	// W
 	
 	'webnewsde' => array(
@@ -939,8 +947,12 @@ $wpsr_floating_bar_bts = array(
 		'bottom_fixed' => '[wpsr_digg type="DiggCompact" script="0"]', 
 	),
 	'Facebook' => array(
-		'float_left' => '[wpsr_facebook style="box_count" width="48"]', // Added "width" in v2.4.2
+		'float_left' => '[wpsr_facebook style="box_count" width="48" ]', // Added "width" in v2.4.2
 		'bottom_fixed' => '[wpsr_facebook style="button_count"]', 
+	),
+	'Facebook Like and Share' => array(
+		'float_left' => '[wpsr_facebook style="box_count" width="70" type="send"]', // Added v2.4.9.5, thanks to Dan: http://bit.ly/1bSWWut
+		'bottom_fixed' => '[wpsr_facebook style="button_count" type="send" ]', 
 	),
 	'StumbleUpon' => array(
 		'float_left' => '[wpsr_stumbleupon type="5" script="0"]', 
@@ -955,8 +967,8 @@ $wpsr_floating_bar_bts = array(
 		'bottom_fixed' => '[wpsr_linkedin type="right" script="0"]', 
 	),
 	'Pinterest' => array(
-		'float_left' => '[wpsr_pinterest type="vertical" script="0"]', 
-		'bottom_fixed' => '[wpsr_pinterest type="horizontal" script="0"]', 
+		'float_left' => '[wpsr_pinterest type="above" script="0"]', //changed type since 2.4.9.8
+		'bottom_fixed' => '[wpsr_pinterest type="beside" script="0"]', 
 	),
 	'Comments' => array(
 		'float_left' => '[wpsr_commentsbt type="vertical"]', 
@@ -1133,7 +1145,7 @@ function wpsr_get_post_details(){
 	}else{
 		
 		// Post details outside the loop
-		$url = (!empty($_SERVER['HTTPS'])) ? "https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		$url = (!empty($_SERVER['HTTPS'])) ? "https://" . htmlspecialchars($_SERVER['HTTP_HOST']) . $_SERVER['REQUEST_URI'] : "http://" . htmlspecialchars($_SERVER['HTTP_HOST']) . $_SERVER['REQUEST_URI']; // Revised since v2.4.9.7
 		$title = wp_title('', 0);
 		$title = (empty($title)) ? get_bloginfo('name') : $title;
 		$title = str_replace(array('<title>', '</title>'), '', $title);
@@ -1221,8 +1233,8 @@ function wpsr_process_template($no, $rss = 0){
 		wpsr_reddit_bt('1'), 					wpsr_reddit_bt('2'),					wpsr_reddit_bt('3'), 
 		wpsr_stumbleupon_bt('1'),				wpsr_stumbleupon_bt('2'),				wpsr_stumbleupon_bt('3'), 
 		wpsr_stumbleupon_bt('5'),				wpsr_linkedin_bt('standard'),			wpsr_linkedin_bt('right'),
-		wpsr_linkedin_bt('top'),				wpsr_pinterest_bt('nocount'), 			wpsr_pinterest_bt('horizontal'),
-		wpsr_pinterest_bt('vertical'),			wpsr_custom_bt('custom1'),				wpsr_custom_bt('custom2')
+		wpsr_linkedin_bt('top'),				wpsr_pinterest_bt('none'), 			wpsr_pinterest_bt('beside'),
+		wpsr_pinterest_bt('above'),			wpsr_custom_bt('custom1'),				wpsr_custom_bt('custom2')
 	);
 
 	$wpsr_button_processed_list_rss = array(
@@ -1404,8 +1416,11 @@ function wpsr_scripts_adder(){
 	
 	if(wpsr_button_used('facebook') == 1){
 		$fbappid = $wpsr_facebook['appid'];
+		$fblocale = $wpsr_facebook['locale'];
+		
 		$fbparam = ($fbappid == '') ? '' : '&appId=' . $fbappid;
-		array_push($scripts, '"https://connect.facebook.net/en_US/all.js#xfbml=1' . $fbparam . '"');
+		$fblang = ( empty($fblocale) ) ? 'en_US' : $fblocale;
+		array_push($scripts, '"https://connect.facebook.net/' . $fblang . '/all.js#xfbml=1' . $fbparam . '"');
 	}
 	
 	if(wpsr_button_used('digg') == 1){

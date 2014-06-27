@@ -1,7 +1,7 @@
 <?php
 /*
  * Retweet buttons Processor code for WP Socializer Plugin
- * Version : 2.4
+ * Version : 2.5
  * Author : Aakash Chakravarthy
 */
 
@@ -46,7 +46,7 @@ function wpsr_retweet($args = ''){
 	
 	$pid = $post->ID;
 	$purl = home_url() . '/?p=' . $pid;
-	$title = trim(str_replace(array( '&', '#', '&#8211;' ), array('', '', '-'), $title)); // revised since v2.4.7
+	//$title = trim(str_replace(array( '&', '#', '&#8211;' ), array('', '', '-'), $title)); // revised since v2.4.9.5
 	
 	## Start Output
 	$retweet_processed = "\n<!-- Start WP Socializer Plugin - Retweet Button -->\n";

@@ -1,6 +1,7 @@
 .wp_rp_wrap .related_post_title {
 	clear: both;
-	padding: 0 !important;	
+	padding: 0 !important;
+	margin: 0 !important;
 }
 div.wp_rp_content {
 	display: inline-block !important;
@@ -30,6 +31,7 @@ ul.related_post {
 	position: relative !important;
 	margin: 0 !important;
 	padding: 0 !important;
+        margin-top: 20px !important;
 }
 ul.related_post li {
 	position: relative !important;
@@ -61,7 +63,6 @@ ul.related_post li img {
 	background: none !important;
 	border: none !important;
 	border-radius: 0px !important;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 ul.related_post li a img.wp_rp_santa_hat {
@@ -74,7 +75,7 @@ ul.related_post li small {
 
 @media screen and (max-width: 480px) {
 	ul.related_post li {
-		display: block !important;
+		display: inline-block !important;
 		width: auto !important;
 		clear: both !important;
 	}
@@ -83,12 +84,5 @@ ul.related_post li small {
 	}
 	ul.related_post li a:nth-child(2) {
 		font-size: 14px !important;
-		padding: 10px 0 10px 110px !important;
-		display: block !important;
-		height: 80px !important;
-	}
-	ul.related_post li img {
-		width: 100px !important;
-		height: 100px !important;
 	}
 }

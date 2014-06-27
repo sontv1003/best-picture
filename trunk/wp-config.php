@@ -16,7 +16,9 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'best-picture');
+define('WP_CACHE', false); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', 'E:\Sources\best-picture\wp-content\plugins\wp-super-cache/' ); //Added by WP-Cache Manager
+define('DB_NAME', 'thutrang_magic4walls');
 
 /** MySQL database username */
 define('DB_USER', 'root');

@@ -40,8 +40,8 @@ get_header();
     <?php
 //    query_posts( 'orderby=meta_value&meta_key=_total_downloads&order=DESC&post_status=publish' );
     //query_posts( 'orderby=name&order=ASC&post_status=publish' );
-    if (have_posts()) :
-        while (have_posts()) : the_post(); ?>        
+    if (have_posts()) : $i = 1;
+        while (have_posts()) : the_post(); if($i++ == 19) break; ?>        
             <div class="box_image fl">
                 <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                     <?php if (has_post_thumbnail($post->ID)) { ?>
@@ -87,8 +87,9 @@ endif; ?>
 </div>
 <div class="widget_content fr">
     <div class="widget_box sidebar_main">
-<?php dynamic_sidebar('sidebar-1'); ?>
-        <?php include_once('ads/widget.php'); ?>
+        <?php dynamic_sidebar('sidebar-1'); ?>
+        <?php include_once('ads/harren_widget.php'); ?>
+        <?php //include_once('ads/widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>

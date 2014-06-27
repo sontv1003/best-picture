@@ -12,6 +12,8 @@
  */
 
 get_header(); ?>
+<?php include_once('ads/harren_horizontal.php'); ?>
+
 <div class="banner clearfix">
     <div class="social fl">
         <ul>
@@ -30,9 +32,10 @@ get_header(); ?>
         </ul>
     </div>
     <div class="ads fr">
-        <?php include_once('ads/banner.php'); ?>
+        <?php include_once('ads/harren_banner.php'); ?>
     </div>
 </div>
+
 <div class="gallery fl">
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
@@ -82,6 +85,7 @@ get_header(); ?>
 <div class="widget_content fr">
     <div class="widget_box sidebar_main">
         <?php dynamic_sidebar('sidebar-2'); ?>
+        <?php include_once('ads/widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>

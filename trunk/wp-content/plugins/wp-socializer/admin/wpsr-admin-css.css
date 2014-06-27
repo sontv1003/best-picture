@@ -1,7 +1,7 @@
 /*
  * Admin Page CSS for WP Socializer plugin
  * Author : Aakash Chakravarthy
- * Version : 1.4
+ * Version : 1.6 (changed 2.4.9.8)
 */
 
 .wrap{
@@ -104,6 +104,7 @@
 .wrap .footer #wpsr_submit{
 	padding: 8px 15px;
 	font-size: 14px !important;
+	height: 40px;
 }
 
 /****************************/
@@ -649,23 +650,18 @@
 .startBox{
 	float: left;
 	width: 43%;
-	padding: 15px;
-	border: 2px solid #ccc;
-	margin-top: 20px;
-	box-shadow: 0 0 7px -1px black;
-	background: url(images/menu-bg.png) repeat-x bottom;
+	padding: 0 15px;
+	margin: 20px 0;
 }
 .startBox p{
 	font-size: 14px;
 	line-height: 150%;
 }
 .startBox.auto{
-	box-shadow: 0 0 7px -1px purple;
-	border-color: purple;
 	margin-right: 15px;
+	border-right: 1px dashed #ccc;
 }
 .startBox.manual{
-	box-shadow: 0 0 7px -1px green;
 	border-color: green;
 }
 

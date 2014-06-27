@@ -2,12 +2,12 @@
 Contributors: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 Plugin URI: http://www.aakashweb.com/wordpress-plugins/wp-socializer/
-Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, widget,  excerpt, content, bookmark, button, technorati, email, gmail, facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, google buzz, yahoo, reddit, dzone, sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
+Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, widget,  excerpt, content, bookmark, button, technorati, email, gmail, facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, yahoo, reddit, dzone, vkontakte, vk, sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
 License: GPLv2 or later
 Donate Link: http://bit.ly/wpsrDonation
 Requires at least: 3.1
-Tested up to: 3.6
-Stable tag: 2.4.9
+Tested up to: 3.8.1
+Stable tag: 2.4.9.8
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -16,6 +16,19 @@ Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing button
 WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar.
 
 [Check out the **LIVE DEMO** of the plugin](http://www.aakashweb.com/demos/wp-socializer/)
+
+[ Note: v2.4.9.8 is a recommended update which fixes various issues. Please update to it for perfect working ]
+
+= New features and bug fixes in v2.4.9.8 =
+
+* (NEW) Social button site (**VKontakte**) (now contains 108 social bookmarking buttons)
+* Sharethis code fix.
+* Sharethis twitter handle fix.
+* Pinterest alignment fix.
+* Social buttons url encoding fix.
+* Facebook button code updated (support for share button).
+* (NEW) Facebook like button for different languages.
+* Google plus button code updated
 
 = Notable features =
 
@@ -27,11 +40,17 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 * Template functions are available for advanced placements.
 * (NEW) Floating sharebar now optimized for mobile devices also.
 
+[Changelog](changelog)
+
+= Future of WP Socializer =
+
+Planned for a complete change in the plugin with simple UI, more buttons and features (may be in v2.5). Hoping to see it in action.
+
 = Buttons available =
 
 Using WP Socializer, you can insert all these buttons into your site. These buttons can be inserted easily in any desired way. There is no fixed way as other plugins do.
 
-**107** Social bookmarking buttons (in both 16px and 32px) - [Demo](http://www.aakashweb.com/demos/wp-socializer/social-buttons/), Addthis, Sharethis, Facebook like, Google +1, Pinterest, 3 Kinds of Retweet and all kinds of Digg, LinkedIn, Reddit & StumbleUpon buttons
+**108** Social bookmarking buttons (in both 16px and 32px) - [Demo](http://www.aakashweb.com/demos/wp-socializer/social-buttons/), Addthis, Sharethis, Facebook like, Google +1, Pinterest, 3 Kinds of Retweet and all kinds of Digg, LinkedIn, Reddit & StumbleUpon buttons
 
 [youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
@@ -62,14 +81,6 @@ There are whole lot of Social bookmarking buttons avaialble in WP Socializer, wh
 = and more ... =
 
 > **Donate:** If you find this plugin useful, [consider making a donation](http://bit.ly/wpsrDonation), it will make me happy for this plugin!!
-
-= New features and fixed bugs =
-* Added mobile optimization or small screen support for the floating sharebar
-* Facebook comments popup clipping is fixed.
-* Sharethis "undefined" object issue is fixed.
-* Social button CSS file size is reduced and notable tweaks are made to the social buttons.
-* Scripts and styles are now loaded properly in the frontend as per the API
-* Source code is revised and optimized.
  
 [More changes listed in Changelog](changelog)
 
@@ -83,6 +94,7 @@ Documentation:
 
 * [Template function reference](http://www.aakashweb.com/docs/wp-socializer-docs/function-reference/).
 * [Manual placement](http://www.aakashweb.com/docs/wp-socializer-docs/manual-placement/).
+* [FAQs](http://www.aakashweb.com/docs/wp-socializer-docs/wp-socializer-faq/)
 
 == Installation ==
 
@@ -97,7 +109,7 @@ Documentation:
 
 == Frequently Asked Questions ==
 
-Frequently Asked Questions can be seen [here](http://www.aakashweb.com/faqs/wordpress-plugins/wp-socializer/).
+Frequently Asked Questions can be seen [here](http://www.aakashweb.com/docs/wp-socializer-docs/wp-socializer-faq/).
 
 For custom placement in theme files and posts, check out the following documentations
 
@@ -121,6 +133,36 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.9.8 =
+* (NEW) Social button site (**VKontakte**) (now contains 108 social bookmarking buttons)
+* Sharethis code fix.
+* Sharethis twitter handle fix.
+* Pinterest alignment fix.
+* Social buttons url encoding fix.
+* Facebook button code updated.
+* (NEW) Facebook like button for different languages.
+* Google plus button code updated
+* Removed outdated options in admin page
+* Minor UI changes
+
+= 2.4.9.7 =
+* Added option to Sharethis "CopyNshare" feature.
+* Fixed the issue in page URL outside the post loop. The wrong share count displayed for various buttons is therefore fixed.
+* Fixed small UI related bugs.
+
+= 2.4.9.6 =
+* Fix Facebook popup transparency.
+* Removed credit links.
+* Revised the email link.
+* Fixed some debug notices.
+
+= 2.4.9.5 =
+* Fixed Twitter title encoding bug.
+* Added Facebook like and send button to the floating sharebar.
+* Fixed bug in sharethis shortcode.
+* Added option to disable mobile mode for floating sharebar.
+* Fixed the irregular position of large pinterest button.
 
 = 2.4.9 =
 * Added mobile optimization or small screen support for the floating sharebar
@@ -246,7 +288,7 @@ For custom placement in theme files and posts, check out the following documenta
 
 == Upgrade Notice ==
 
-Version 2.4.x is a recommended upgrade to get all the latest social bookmarking and sharing buttons available in the Internet. Various bugs are fixed and the admin UI is completely changed for easy use.
+Version 2.4.9.8 is a recommended upgrade to get all the latest social bookmarking and sharing buttons available in the Internet. Various bugs are fixed. Please dont ignore to update to it.
 
 == Credits ==
 

@@ -12,6 +12,7 @@ function wpsr_floatbts_reset_values(){
 	$wpsr_floatbts['insingle'] = 1;
 	$wpsr_floatbts['inpage'] = 1;
 	$wpsr_floatbts['disabled'] = 0;
+	$wpsr_floatbts['mobmode'] = 0;
 	
 	$wpsr_floatbts['floatleft_movable'] = 1;
 	$wpsr_floatbts['floatleft_offset'] = 25;
@@ -37,6 +38,7 @@ function wpsr_admin_page_floating_bar(){
 		$wpsr_floatbts['inpage'] = $_POST['wpsr_floatbts_inpage'];
 		$wpsr_floatbts['inpage'] = $_POST['wpsr_floatbts_inpage'];
 		$wpsr_floatbts['disabled'] = $_POST['wpsr_floatbts_disabled'];
+		$wpsr_floatbts['mobmode'] = $_POST['wpsr_floatbts_mobmode'];
 		
 		$wpsr_floatbts['floatleft_movable'] = $_POST['wpsr_floatbts_floatleft_movable'];
 		$wpsr_floatbts['floatleft_offset'] = stripslashes($_POST['wpsr_floatbts_floatleft_offset']);
@@ -113,6 +115,12 @@ function wpsr_admin_page_floating_bar(){
 	<label><input name="wpsr_floatbts_inpage" id="wpsr_floatbts_inpage" type="checkbox" value="1" <?php echo $wpsr_floatbts['inpage'] == "1" ? 'checked="checked"' : ""; ?> /> In Pages</label>
 	</td>
 	      </tr>
+		  
+		  <tr>
+		  	<td height="37">Disable the mobile mode for floating sharebar <small class="redText">Beta</small></td>
+		  	<td><input name="wpsr_floatbts_mobmode" id="wpsr_floatbts_mobmode" type="checkbox" value="1" <?php echo $wpsr_floatbts['mobmode'] == "1" ? 'checked="checked"' : ""; ?> /></td>
+		  </tr>
+		  
 		  <tr>
 		  	<td height="37">Disable the floating sharebar</td>
 		  	<td><input name="wpsr_floatbts_disabled" id="wpsr_floatbts_disabled" type="checkbox" value="1" <?php echo $wpsr_floatbts['disabled'] == "1" ? 'checked="checked"' : ""; ?> /></td>
