@@ -1,7 +1,7 @@
 <?php
 /*
  * Pinterest, Reddit, StumbleUpon and LinkedIn buttons Processor code for WP Socializer Plugin
- * Version : 2.4
+ * Version : 2.5
  * Since v2.0
  * Author : Aakash Chakravarthy
 */
@@ -119,12 +119,17 @@ function wpsr_pinterest($args = ''){
 	$args = wp_parse_args($args, $defaults);
 	extract($args, EXTR_SKIP);
 	
+	// fix padding problem since 2.4.9.8
+	$padd = "";
+	if( $type == 'above' ) $padd = 'style="padding:35px 0 5px"';
+	elseif( $type == 'beside' ) $padd = 'style="padding-right:50px"';
+	
 	$pinterest_processed = "\n<!-- Start WP Socializer Plugin - Pinterest Button -->\n";
 	
 	switch($output){
 		// Display the ordinary button
 		case 'button':
-			$pinterest_processed .= '<a href="http://pinterest.com/pin/create/button/?url=' . urlencode($url) . '&amp;media=' . urlencode($media) . '" class="pin-it-button" count-layout="' . $type . '"><img border="0" src="//assets.pinterest.com/images/PinExt.png" alt="Pinterest" title="Pin It" /></a>';
+			$pinterest_processed .= '<div ' . $padd . '><a href="http://pinterest.com/pin/create/button/?url=' . urlencode($url) . '&amp;media=' . urlencode($media) . '"  data-pin-do="buttonPin" data-pin-config="' . $type . '" ><img border="0" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" alt="Pinterest" title="Pin It" /></a></div>';
 		break;
 		
 		// Display the Image format

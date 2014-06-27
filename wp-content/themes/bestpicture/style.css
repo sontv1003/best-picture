@@ -307,13 +307,14 @@ table.customer td a.sign_in {
 }
 .group_relate {
     margin-top: 20px;
+    width: 105%;
 }
 .wp_rp_wrap .related_post_title {
     margin-bottom: 20px !important;
 }
 .wp_rp_vertical ul.related_post li img{
-    width: 221px !important;
-    height: 156px !important;
+    width: 224px !important;
+    height: 160px !important;
 }
 .wp_rp_vertical ul.related_post li.last {
     margin-right: 0px !important;
@@ -326,8 +327,8 @@ table.customer td a.sign_in {
     background: #fff;
     border: 1px solid #C3C3C3;
     float: left;
-    width: 233px !important;
-    height: 168px !important;
+    width: 235px !important;
+    height: 172px !important;
     margin-top: 0px !important;
     margin-left: 0px !important;
     margin-right: 10px !important;
@@ -693,7 +694,9 @@ h1.entry-title {
     /*font-weight: bold;*/
     color: #006edb;
 }
-.widget_text {
-    border: none !important;
-    background: transparent !important;
+ul.related_post wp_rp {
+    margin-top: 20px !important;
+}
+ul.related_post li img {
+    border-radius: 0px !important;
 }

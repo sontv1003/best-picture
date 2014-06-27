@@ -141,11 +141,14 @@ get_header();
     <?php endif; ?>
 
     <div class="clear"></div>
+    <div style="margin-top: 20px;">
+    <?php include_once('ads/harren_banner.php'); ?>
+    </div>
     <div class="line"></div>        
     <div class="group_relate clearfix">
         <?php wp_related_posts() ?>
     </div>
-    <div class="fb-comment">
+    <div class="fb-comment" style="margin-top: 20px;">
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
@@ -163,6 +166,7 @@ get_header();
 <div class="widget_single fr">
     <div class="widget_box sidebar-single">
         <?php dynamic_sidebar('sidebar-2'); ?>
+        <?php include_once('ads/harren_widget.php'); ?>
     </div>
 </div>
 <div class="clear"></div>

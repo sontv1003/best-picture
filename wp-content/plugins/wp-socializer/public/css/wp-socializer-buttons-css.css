@@ -1,5 +1,5 @@
 /*
- * WP Socializer Social buttons - CSS File - v2.5
+ * WP Socializer Social buttons - CSS File - v2.7
  * Author: Aakash Chakravarthy
  */
 
@@ -120,11 +120,7 @@
 	width: 60px;
 	margin: 0px 0px 0px 0px !important;
 	z-index: 9999;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 	border-radius: 10px;
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 	text-align: center;
 }
@@ -144,14 +140,7 @@
 	width: 900px;
 	z-index: 9999;
 	padding: 0px 0px 0px 15px;
-	-moz-border-radius-topleft: 10px;
-	-moz-border-radius-topright: 10px;
-	-moz-border-radius-bottomright: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	-webkit-border-radius: 10px 10px 0px 0px;
 	border-radius: 10px 10px 0px 0px;
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 	left: 0px;
 	right: 0px;
@@ -174,8 +163,6 @@
 	background-color: #333;
 	background-image: url(images/dark-bg.png);
 	background-position: 0px 0px;
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 }
 .wpsr-floatbar-float_left.wpsr-floatbar-dark{
@@ -280,11 +267,19 @@
 	position: fixed !important;
 	width: 200px;
 	margin-left: -100px !important;
+	margin-top: -100px !important;
 	display: none;
 }
 .wpsr_floatbt_min .wpsr_floatbt{
 	float: left;
-	margin: 10px;
+	margin: 10px 1%;
+	width: 31%;
+	min-height: 70px;
+	max-height: 70px;
+	overflow: hidden;
+}
+.wpsr_floatbt_min .wpsr-linkback{
+	display: none;
 }
 .wpsr_shareminbt{
 	display: none;
@@ -294,12 +289,18 @@
 	left: 0;
 	width: 64px;
 	height: 64px;
+	margin-top: -32px;
 }
 
 /* ADJUSTMENTS */
 .wpsr-floatbar-float_left .wpsr_floatbt .fb-like{
 	width: 50px !important;
+	overflow: hidden; /* FB locale buttons fix */
 }
+.wpsr-floatbar-float_left .wpsr_floatbt .fb-like:hover{
+	overflow: visible;
+}
+
 .wpsr_floatbt .wp-socializer-single{
 	margin: 0px;
 }
@@ -312,6 +313,10 @@
 /* Hide fbpop to bottom_fixed */
 .wpsr-floatbar-bottom_fixed .fb-like > span{
 	overflow: hidden !important;
+}
+/* Pintrest push down, since v2.4.9.5 */
+.wpsr-btn a[data-pin-config="above"]{
+	margin-bottom: -45px !important;
 }
 
 /* Clearfix */

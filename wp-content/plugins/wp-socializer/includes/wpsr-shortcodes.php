@@ -1,7 +1,7 @@
 <?php
 /*
  * Shortcodes for WP Socializer plugin
- * Version : 2.4
+ * Version : 2.5
  * Author : Aakash Chakravarthy
  * Since : 2.0
  */
@@ -20,7 +20,7 @@ add_shortcode('wpsr_addthis', 'wpsr_addthis_shortcode');
 
 ## Sharethis button Shortcode
 function wpsr_sharethis_shortcode($atts){
-	return wpsr_sharethis($atts) . wpsr_sharethis_config() . wpsr_sharethis_config();
+	return wpsr_sharethis($atts) . wpsr_sharethis_config() . wpsr_sharethis_script();
 }
 add_shortcode('wpsr_sharethis', 'wpsr_sharethis_shortcode');
 

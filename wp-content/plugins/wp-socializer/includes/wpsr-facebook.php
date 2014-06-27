@@ -1,7 +1,7 @@
 <?php
 /*
  * Facebook buttons Processor code for WP Socializer Plugin
- * Version : 1.8
+ * Version : 1.9
  * Author : Aakash Chakravarthy
 */
 
@@ -19,9 +19,7 @@ function wpsr_facebook($args = ''){
 		'type' => 'like',
 		'style' => 'button_count',
 		'showfaces' => 1,
-		'width'=> 80,
 		'verb' => 'like',
-		'font' => 'arial',
 		'color' => 'light',
 		'appid' => '',
 		'text' => __('Share on Facebook', 'wpsr'),
@@ -39,7 +37,7 @@ function wpsr_facebook($args = ''){
 		case 'button':
 				
 			$facebook_processed .=
-			'<div class="fb-like" data-href="' . $url . '" data-send="' . (($type == 'send') ? 'true' : 'false') . '" data-layout="' . $style . '" data-width="' . $width . '" data-show-faces="' . $showfaces . '" data-action="' . $verb . '" data-font="' . $font . '" data-colorscheme="' . $color . '"></div>';
+			'<div class="fb-like" data-href="' . $url . '" data-share="' . ( $type == 'send' ? 'true' : 'false') . '" data-layout="' . $style . '" data-show-faces="' . $showfaces . '" data-action="' . $verb . '" data-colorscheme="' . $color . '"></div>';
 			
 		break;
 		
@@ -70,8 +68,6 @@ function wpsr_facebook_bt($type){
 		'type' => $type,
 		'style' => $wpsr_facebook['btstyle'],
 		'showfaces' => $wpsr_facebook['showfaces'],
-		'width' => $wpsr_facebook['width'],
-		'font' => $wpsr_facebook['font'],
 		'verb' => $wpsr_facebook['verb'],
 		'color' => $wpsr_facebook['color'],
 		'appid' => $wpsr_facebook['appid']

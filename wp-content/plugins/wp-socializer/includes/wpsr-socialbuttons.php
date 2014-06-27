@@ -1,7 +1,7 @@
 <?php
 /*
  * Social buttons Processor code for WP Socializer Plugin
- * Version : 4.7
+ * Version : 4.9
  * Author : Aakash Chakravarthy
 */
 
@@ -157,7 +157,7 @@ function wpsr_socialbts_processlist($args = ''){
 	$url = urlencode($pUrl);
 	$deUrl = $pUrl;
 	
-	$title = urlencode(trim(str_replace('&#8211;', '-', $pTitle))); // Revised in v2.4.6
+	$title = urlencode( html_entity_decode( trim( $pTitle ) ) ); // REVISED IN 2.4.9.8
 	$deTitle = trim($pTitle);
 
 	$excerpt = trim(urlencode($pExcerpt));
@@ -185,7 +185,7 @@ function wpsr_socialbts_processlist($args = ''){
 	);
 
 	$srvcsSplit = explode(',', $services);
-	$spriteImage = WPSR_SOCIALBT_IMGPATH . "wp-socializer-sprite-$pixel.png";
+	$spriteImage = WPSR_SOCIALBT_IMGPATH . "wp-socializer-sprite-$pixel.png?v1";
 	$spriteMaskImage = WPSR_SOCIALBT_IMGPATH . "wp-socializer-sprite-mask-$pixel.gif";
 	$srvcsCount = count($srvcsSplit);
 	$socialbts_list = '';
@@ -269,6 +269,8 @@ function wpsr_socialbts($args = ''){
 	
 	$args = wp_parse_args($args, $defaults);
 	extract($args, EXTR_SKIP);
+	
+	$socialbt_processed = ''; // Define empty var v2.4.9.6
 	
 	if($output != 'singles'){
 		$socialbt_processed = "\n<!-- Start WP Socializer - Social Buttons - Output -->\n";

@@ -1,7 +1,7 @@
 <?php
 /*
  * Floating share bar Processor code for WP Socializer Plugin
- * Version : 1.3
+ * Version : 1.5
  * Since : v2.4
  * Author : Aakash Chakravarthy
 */
@@ -24,20 +24,15 @@ function wpsr_process_floatingbts(){
 		$content .= '<div class="wpsr_floatbt">' . $wpsr_floating_bar_bts[$selSplitted[$i]][$wpsr_floatbts['position']] . "</div>" ;
 	}
 	
-	$width = (($wpsr_floatbts['position'] == 'bottom_fixed') ? 'style="width:' . $wpsr_floatbts['bottomfixed_width'] . 'px"' : '');
+	$width = ($wpsr_floatbts['position'] == 'bottom_fixed') ? 'style="width:' . $wpsr_floatbts['bottomfixed_width'] . 'px"' : '';
+	$mobmode = ($wpsr_floatbts['mobmode'] == 1) ? ' data-mobmode="0" ' : ' data-mobmode="1" ';
 	
-	$start = '<div class="wpsr-floatbar-' . $wpsr_floatbts['position'] . ' wpsr-floatbar-' . $wpsr_floatbts['theme'] . ($wpsr_floatbts['floatleft_movable'] ? ' wpsr-floatbar-movable ' : '') . ' clearfix" ' . $width . '>';
-	
-	if($wpsr_settings['disablecredits'] == 0){
-		$end = '<div class="wpsr-linkback"><a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank">WP Socializer</a> <a href="http://www.aakashweb.com" target="_blank" class="wpsr_linkaw">Aakash Web</a></div>';
-	}else{
-		$end = '';
-	}
+	$start = '<div class="wpsr-floatbar-' . $wpsr_floatbts['position'] . ' wpsr-floatbar-' . $wpsr_floatbts['theme'] . ($wpsr_floatbts['floatleft_movable'] ? ' wpsr-floatbar-movable ' : '') . ' clearfix" ' . $width . $mobmode . '>';
 	
 	if($wpsr_floatbts['position'] == 'bottom_fixed')
 		$end .= '<div title="Collapse the Share bar" class="wpsr_hidebt"></div>';
 	
-	$end .= '</div>';
+	$end = '</div>';
 	
 	if($wpsr_floatbts['position'] == 'float_left')
 		$end .= '<div class="wpsr_shareminbt"></div>';

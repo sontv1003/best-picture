@@ -1,7 +1,7 @@
 <?php
 /*
  * Widget for WP Socializer plugin
- * Version : 1.0
+ * Version : 1.1
  * Author : Aakash Chakravarthy
  * Since : 2.3
  */
@@ -46,7 +46,7 @@ class WPSR_Widget extends WP_Widget {
 		}elseif($widget_type == 'googleplus-badge'){
 			
 			$output .= '<script type="text/javascript">(function() {var po = document.createElement("script");po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(po, s);})()</script>';
-			$output .= '<div class="g-plus" data-href="https://plus.google.com/' . $gplus_pageid .'" data-size="' . $gplus_badgetype . '"></div>';
+			$output .= '<div class="g-page" data-width="250" data-rel="publisher" data-href="https://plus.google.com/' . $gplus_pageid .'" ' . (($gplus_badgetype == 'smallbadge') ? 'data-layout="landscape"' : '') . '></div>';
 			
 		}
 		$output .= "\n<!-- End WP Socializer Widget v" . WPSR_VERSION . "-->\n\n";

@@ -22,6 +22,9 @@ class WPRPZemanta {
 
 	public function __construct()
 	{
+		if (defined('ZEMANTA_PLUGIN_VERSION_OPTION')) { // Make sure this doesn't clash with the Editorial Assistant
+			return;
+		}
 		global $wp_version;
 		
 		// initialize update notes shown once on plugin update
@@ -43,8 +46,8 @@ class WPRPZemanta {
 	* Initialize plugin
 	*
 	*/
-	public function init() 
-	{
+	public function init() {
+
 		add_action('wp_ajax_zemanta_set_featured_image', array($this, 'ajax_zemanta_set_featured_image'));
 		add_action('edit_form_advanced', array($this, 'assets'), 1);
 		add_action('edit_page_form', array($this, 'assets'), 1);

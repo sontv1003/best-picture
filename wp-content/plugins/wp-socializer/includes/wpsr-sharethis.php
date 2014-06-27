@@ -1,7 +1,7 @@
 <?php
 /*
  * Sharethis buttons Processor code for WP Socializer Plugin
- * Version : 2.4
+ * Version : 2.6
  * Author : Aakash Chakravarthy
 */
 
@@ -24,15 +24,19 @@ function wpsr_sharethis_config(){
 	
 	$wpsr_sharethis_pubkey = $wpsr_sharethis['pubkey'];
 	$wpsr_sharethis_pubkey = ($wpsr_sharethis_pubkey == '') ? wpsr_sharethis_pubkey() : $wpsr_sharethis_pubkey;
+	$wpsr_sharethis_copynshare = $wpsr_sharethis['copynshare'] ? 'true' : 'false';
 	
 	// Return the script
-	return "\n<!-- WP Socializer - ShareThis Config -->\n" .
-'<script type="text/javascript">
-var sharethisLoad = function(){ stLight.options({publisher:\'' . $wpsr_sharethis_pubkey . '\'}); }, st_type=\'wordpress\';
+	return '<!-- WP Socializer - ShareThis Config -->
+<script type="text/javascript">
+var switchTo5x=false;
+var sharethisLoad = function(){
+	' . "stLight.options({publisher: '{$wpsr_sharethis_pubkey}', doNotHash: {$wpsr_sharethis_copynshare}, doNotCopy: {$wpsr_sharethis_copynshare}, hashAddressBar: false});" . '
+};
 if(window.addEventListener) window.addEventListener("load", sharethisLoad, false); 
 else if (window.attachEvent) window.attachEvent("onload", sharethisLoad);
-</script>' .
-	"\n<!-- WP Socializer - End ShareThis Config -->\n";
+</script>
+<!-- WP Socializer - End ShareThis Config -->';
 }
 
 function wpsr_sharethis_script(){
@@ -48,6 +52,9 @@ function wpsr_sharethis($args = ''){
 	
 	## Sharethis option
 	$wpsr_sharethis = get_option('wpsr_sharethis_data');
+	
+	# Get Retweet Button Options
+	$wpsr_retweet = get_option('wpsr_retweet_data');
 	
 	$defaults = array (
 		'output' => 'vcount',
@@ -73,6 +80,7 @@ function wpsr_sharethis($args = ''){
 	
 	// $title = urlencode($title); (fix v2.1)
 	// $url = urlencode($url); (fix v2.4.6)
+	$username = $wpsr_retweet['username'];
 	
 	if($addp == 1){
 		$before_st = '<p>';
@@ -86,47 +94,47 @@ function wpsr_sharethis($args = ''){
 		case 'vcount':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}_vcount' st_title='{$title}' st_url='{$url}' displayText='share'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}_vcount' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='share'></span>";
 			}
 		break;
 		
 		case 'hcount':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}_hcount' st_title='{$title}' st_url='{$url}' displayText='share'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}_hcount' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='share'></span>";
 			}
 		break;
 		
 		case 'buttons':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}_buttons' st_title='{$title}' st_url='{$url}' displayText='share'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}_buttons' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='share'></span>";
 			}
 		break;
 		
 		case 'large':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}_large' st_title='{$title}' st_url='{$url}' displayText='share'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}_large' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='share'></span>";
 			}
 		break;
 		
 		case 'regular':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}' st_title='{$title}' st_url='{$url}' displayText='share'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='share'></span>";
 			}
 		break;
 		
 		case 'regular2':
 			foreach($services_split as $srvc){
 				$srvc = trim($srvc);
-				$sharethis_processed .= "<span class='st_{$srvc}' st_title='{$title}' st_url='{$url}'></span>";
+				$sharethis_processed .= "<span class='st_{$srvc}' st_title='{$title}' st_via='{$username}' st_url='{$url}'></span>";
 			}
 		break;
 		
 		case 'classic':
-			$sharethis_processed .= "<span class='st_sharethis' st_title='{$title}' st_url='{$url}' displayText='ShareThis'></span>";
+			$sharethis_processed .= "<span class='st_sharethis' st_title='{$title}' st_via='{$username}' st_url='{$url}' displayText='ShareThis'></span>";
 		break;
 		
 		case 'image':

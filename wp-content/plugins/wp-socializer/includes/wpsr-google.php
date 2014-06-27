@@ -1,7 +1,7 @@
 <?php
 /*
  * Google +1 button Processor code for WP Socializer Plugin
- * Version : 3.2
+ * Version : 3.3
  * Author : Aakash Chakravarthy
 */
 
@@ -43,7 +43,7 @@ function wpsr_plusone($args = ''){
 	switch($output){
 		// Display the ordinary button
 		case 'button':
-			$plusone_processed .= '<g:plusone size="' . $type . '" href="' . $url . '" ' . $params . '></g:plusone>';
+			$plusone_processed .= '<div class="g-plusone" data-size="' . $type . '" data-href="' . $url . '"></div>';
 		break;
 	}
 	
